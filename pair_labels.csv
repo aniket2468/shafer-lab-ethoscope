@@ -1,0 +1,146 @@
+experiment_date,ethoscope_id,sex,pair_id,focal_tube,yoked_tube,skip_rows,label,reason_tag,reason_note,reason_tag_secondary,reason_note_secondary,confidence_human
+9-Feb-2026,Eth008,Male,1,1,12,39,Good,pass_qc,,,,
+9-Feb-2026,Eth008,Male,2,3,14,39,Good,pass_qc,,,,
+9-Feb-2026,Eth008,Male,3,5,16,39,Good,pass_qc,,,,
+9-Feb-2026,Eth008,Male,4,7,18,39,Good,pass_qc,,,,
+9-Feb-2026,Eth008,Male,5,9,20,39,Good,pass_qc,,,,
+9-Feb-2026,Eth010,Male,1,1,12,39,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+9-Feb-2026,Eth010,Male,2,3,14,39,Bad,recovery_period_anomaly,Recovery period shows activeness for too long vs expected,tracking_error,Ethoscope device somewhat noisy; may contribute to mis-read of wake/sleep,High
+9-Feb-2026,Eth010,Male,3,5,16,39,Good,pass_qc,,,,
+9-Feb-2026,Eth010,Male,4,7,18,39,Bad,arrhythmic,"No 12-hour rhythmic pattern visible till day 5, likely tracking issue",tracking_error,Ethoscope noisy; tracking issue called out in primary assessment,High
+9-Feb-2026,Eth010,Male,5,9,20,39,Bad,arrhythmic,"No 12-hour rhythmic pattern, tracking issue same as P4",tracking_error,Ethoscope noisy; tracking issue called out in primary assessment,High
+9-Feb-2026,Eth007,Female,1,1,12,39,Bad,arrhythmic,"Flat activeness in daylight first half between day 4-5, unusual pattern",,,High
+9-Feb-2026,Eth007,Female,2,3,14,39,Bad,arrhythmic,"Flat activeness in daylight first half between day 4-5, unusual pattern",,,High
+9-Feb-2026,Eth007,Female,3,5,16,39,Bad,arrhythmic,"Flat activeness in daylight first half between day 4-5, unusual pattern",,,High
+9-Feb-2026,Eth007,Female,4,7,18,39,Bad,arrhythmic,"Flat activeness in daylight first half between day 4-5, unusual pattern",,,High
+9-Feb-2026,Eth007,Female,5,9,20,39,Bad,arrhythmic,"Flat activeness in daylight first half between day 4-5, unusual pattern",,,High
+9-Feb-2026,Eth014,Female,1,1,12,39,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+9-Feb-2026,Eth014,Female,2,3,14,39,Bad,arrhythmic,Flat activeness in first half of daylight between day 4-5,,,High
+9-Feb-2026,Eth014,Female,3,5,16,39,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+9-Feb-2026,Eth014,Female,4,7,18,39,Bad,arrhythmic,Flat activeness in daylight between day 4-5 and data also missing,,,High
+9-Feb-2026,Eth014,Female,5,9,20,39,Bad,recovery_period_anomaly,Recovery period shows activeness for too long vs expected,tracking_error,Ethoscope device somewhat noisy; may contribute to mis-read of wake/sleep,High
+17-Mar-2026,Eth007,Male,1,1,12,37,Bad,flat_signal,"From day 2 onward, daytime first half shows too long a flat line (low activeness when activity expected)",,,High
+17-Mar-2026,Eth007,Male,2,3,14,37,Bad,flat_signal,"From day 2 onward, daytime first half shows too long a flat line (low activeness when activity expected)",,,High
+17-Mar-2026,Eth007,Male,3,5,16,37,Bad,corrupted_data,Pattern and rhythm wildly odd from day 3; yoked line completely overlapping with focal,,,High
+17-Mar-2026,Eth007,Male,4,7,18,37,Bad,flat_signal,"From day 2 onward, daytime first half shows too long a flat line (low activeness when activity expected)",,,High
+17-Mar-2026,Eth007,Male,5,9,20,37,Bad,missing_data,Incomplete / missing data segments,no_sleep_deprivation,No sleep deprivation observed in pair,High
+17-Mar-2026,Eth008,Male,1,1,12,37,Good,pass_qc,,,,
+17-Mar-2026,Eth008,Male,2,3,14,37,Good,pass_qc,,,,
+17-Mar-2026,Eth008,Male,3,5,16,37,Bad,corrupted_data,"Data between day 4-5 is weirdest, implausible values",,,High
+17-Mar-2026,Eth008,Male,4,7,18,37,Good,pass_qc,,,,
+17-Mar-2026,Eth008,Male,5,9,20,37,Good,pass_qc,,,,
+17-Mar-2026,Eth009,Male,1,1,12,37,Bad,arrhythmic,Yoked and focal in opposite states for very long period; no activity at light-dark transition,,,High
+17-Mar-2026,Eth009,Male,2,3,14,37,Bad,flat_signal,Same as Eth007 P1 (17-Mar): long flat line in daytime first half from day 2,,,High
+17-Mar-2026,Eth009,Male,3,5,16,37,Good,pass_qc,,,,
+17-Mar-2026,Eth009,Male,4,7,18,37,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+17-Mar-2026,Eth009,Male,5,9,20,37,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+17-Mar-2026,Eth010,Male,1,1,12,37,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+17-Mar-2026,Eth010,Male,2,3,14,37,Bad,corrupted_data,Yoked data wrong,,,High
+17-Mar-2026,Eth010,Male,3,5,16,37,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+17-Mar-2026,Eth010,Male,4,7,18,37,Good,pass_qc,,,,
+17-Mar-2026,Eth010,Male,5,9,20,37,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+17-Mar-2026,Eth011,Male,1,1,12,37,Good,pass_qc,,,,
+17-Mar-2026,Eth011,Male,2,3,14,37,Good,pass_qc,,,,
+17-Mar-2026,Eth011,Male,3,5,16,37,Bad,missing_data,Missing night data at end; night data between day 4-5 not correct,,,High
+17-Mar-2026,Eth011,Male,4,7,18,37,Good,pass_qc,,,,
+17-Mar-2026,Eth011,Male,5,9,20,37,Good,pass_qc,,,,
+17-Mar-2026,Eth012,Male,1,1,12,37,Bad,missing_data,No data at all,,,High
+17-Mar-2026,Eth012,Male,2,3,14,37,Bad,flat_signal,Longer flat lines in activeness and sleep; data missing after day 3,tracking_error,Long flat segments often reflect noisy tracking; data missing after day 3,High
+17-Mar-2026,Eth012,Male,3,5,16,37,Good,pass_qc,,,,
+17-Mar-2026,Eth012,Male,4,7,18,37,Good,pass_qc,,,,
+17-Mar-2026,Eth012,Male,5,9,20,37,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+17-Mar-2026,Eth013,Male,1,1,12,37,Bad,corrupted_data,After day 4 data swings to extreme lowest/highest values only (implausible),no_sleep_deprivation,No sleep deprivation observed in pair,High
+17-Mar-2026,Eth013,Male,2,3,14,37,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+17-Mar-2026,Eth013,Male,3,5,16,37,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+17-Mar-2026,Eth013,Male,4,7,18,37,Bad,missing_data,No data at all,,,High
+17-Mar-2026,Eth013,Male,5,9,20,37,Bad,missing_data,No data recorded,,,High
+17-Mar-2026,Eth015,Male,1,1,12,37,Bad,flat_signal,Same as Eth007 P1 (17-Mar): long flat line in daytime first half from day 2,,,High
+17-Mar-2026,Eth015,Male,2,3,14,37,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+17-Mar-2026,Eth015,Male,3,5,16,37,Bad,flat_signal,Same as Eth007 P1 (17-Mar): long flat line in daytime first half from day 2,,,High
+17-Mar-2026,Eth015,Male,4,7,18,37,Good,pass_qc,,,,
+17-Mar-2026,Eth015,Male,5,9,20,37,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth007,Male,1,1,12,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth007,Male,2,3,14,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth007,Male,3,5,16,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth007,Male,4,7,18,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth007,Male,5,9,20,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth008,Male,1,1,12,43,Good,pass_qc,,,,
+27-Mar-2026,Eth008,Male,2,3,14,43,Good,pass_qc,,,,
+27-Mar-2026,Eth008,Male,3,5,16,43,Good,pass_qc,,,,
+27-Mar-2026,Eth008,Male,4,7,18,43,Good,pass_qc,,,,
+27-Mar-2026,Eth008,Male,5,9,20,43,Good,pass_qc,,,,
+27-Mar-2026,Eth011,Male,1,1,12,43,Bad,transition_issue,Day 5 light-to-dark transition: flies still asleep; expected some activeness at transition,,,High
+27-Mar-2026,Eth011,Male,2,3,14,43,Good,pass_qc,,,,
+27-Mar-2026,Eth011,Male,3,5,16,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth011,Male,4,7,18,43,Good,pass_qc,,,,
+27-Mar-2026,Eth011,Male,5,9,20,43,Good,pass_qc,,,,
+27-Mar-2026,Eth009,Female,1,1,12,43,Good,pass_qc,,,,
+27-Mar-2026,Eth009,Female,2,3,14,43,Good,pass_qc,,,,
+27-Mar-2026,Eth009,Female,3,5,16,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth009,Female,4,7,18,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth009,Female,5,9,20,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth010,Female,1,1,12,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth010,Female,2,3,14,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth010,Female,3,5,16,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth010,Female,4,7,18,43,Bad,tracking_error,Ethoscope device somewhat noisy; tracking does not match expected pattern every time (exact timing varies by pair),,,High
+27-Mar-2026,Eth010,Female,5,9,20,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth012,Female,1,1,12,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth012,Female,2,3,14,43,Bad,missing_data,Data missing,,,High
+27-Mar-2026,Eth012,Female,3,5,16,43,Bad,tracking_error,Ethoscope device somewhat noisy; tracking does not match expected pattern every time (exact timing varies by pair),,,High
+27-Mar-2026,Eth012,Female,4,7,18,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth012,Female,5,9,20,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth013,Female,1,1,12,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth013,Female,2,3,14,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth013,Female,3,5,16,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth013,Female,4,7,18,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth013,Female,5,9,20,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth014,Female,1,1,12,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth014,Female,2,3,14,43,Bad,tracking_error,Ethoscope device somewhat noisy; tracking does not match expected pattern every time (exact timing varies by pair),,,High
+27-Mar-2026,Eth014,Female,3,5,16,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth014,Female,4,7,18,43,Good,pass_qc,,,,
+27-Mar-2026,Eth014,Female,5,9,20,43,Bad,tracking_error,Ethoscope device somewhat noisy; tracking does not match expected pattern every time (exact timing varies by pair),,,High
+27-Mar-2026,Eth015,Female,1,1,12,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth015,Female,2,3,14,43,Bad,tracking_error,Ethoscope device somewhat noisy; tracking does not match expected pattern every time (exact timing varies by pair),,,High
+27-Mar-2026,Eth015,Female,3,5,16,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth015,Female,4,7,18,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+27-Mar-2026,Eth015,Female,5,9,20,43,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+6-Apr-2026,Eth008,Male,1,1,12,34,Good,pass_qc,,,,
+6-Apr-2026,Eth008,Male,2,3,14,34,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+6-Apr-2026,Eth008,Male,3,5,16,34,Bad,high_activity_anomaly,Mostly good but between day 4–5 data shows more activeness than expected,,,High
+6-Apr-2026,Eth008,Male,4,7,18,34,Good,pass_qc,,,,
+6-Apr-2026,Eth008,Male,5,9,20,34,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+6-Apr-2026,Eth009,Male,1,1,12,34,Bad,transition_issue,Light/dark transition activeness issue: at transition flies still sleeping (low activity when wake expected),,,High
+6-Apr-2026,Eth009,Male,2,3,14,34,Good,pass_qc,,,,
+6-Apr-2026,Eth009,Male,3,5,16,34,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+6-Apr-2026,Eth009,Male,4,7,18,34,Good,pass_qc,,,,
+6-Apr-2026,Eth009,Male,5,9,20,34,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+6-Apr-2026,Eth011,Male,1,1,12,34,Bad,transition_issue,Same as 6-Apr Eth009 P1: transition activeness issue (flies still sleeping at LD transition),,,High
+6-Apr-2026,Eth011,Male,2,3,14,34,Good,pass_qc,,,,
+6-Apr-2026,Eth011,Male,3,5,16,34,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+6-Apr-2026,Eth011,Male,4,7,18,34,Good,pass_qc,,,,
+6-Apr-2026,Eth011,Male,5,9,20,34,Bad,recovery_period_anomaly,Generally good pair but in recovery period between transitions fly is overly active,,,High
+6-Apr-2026,Eth014,Male,1,1,12,34,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+6-Apr-2026,Eth014,Male,2,3,14,34,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+6-Apr-2026,Eth014,Male,3,5,16,34,Bad,flat_signal,Too flat lines of activeness in recovery period,,,High
+6-Apr-2026,Eth014,Male,4,7,18,34,Good,pass_qc,,,,
+6-Apr-2026,Eth014,Male,5,9,20,34,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+6-Apr-2026,Eth015,Male,1,1,12,34,Bad,flat_signal,Many complete flat lines in the trace; primarily ethoscope/tracking noise; some intervals missing data; exact timing varies by pair,tracking_error,Device somewhat noisy; tracking inconsistent vs expectation,High
+6-Apr-2026,Eth015,Male,2,3,14,34,Good,pass_qc,,,,
+6-Apr-2026,Eth015,Male,3,5,16,34,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+6-Apr-2026,Eth015,Male,4,7,18,34,Good,pass_qc,,,,
+6-Apr-2026,Eth015,Male,5,9,20,34,Bad,flat_signal,Many complete flat lines in the trace; primarily ethoscope/tracking noise; some intervals missing data; exact timing varies by pair,tracking_error,Device somewhat noisy; tracking inconsistent vs expectation,High
+6-Apr-2026,Eth007,Female,1,1,12,34,Bad,flat_signal,Many complete flat lines in the trace; primarily ethoscope/tracking noise; some intervals missing data; exact timing varies by pair,tracking_error,Device somewhat noisy; tracking inconsistent vs expectation,High
+6-Apr-2026,Eth007,Female,2,3,14,34,Bad,flat_signal,Many complete flat lines in the trace; primarily ethoscope/tracking noise; some intervals missing data; exact timing varies by pair,tracking_error,Device somewhat noisy; tracking inconsistent vs expectation,High
+6-Apr-2026,Eth007,Female,3,5,16,34,Bad,flat_signal,Many complete flat lines in the trace; primarily ethoscope/tracking noise; some intervals missing data; exact timing varies by pair,tracking_error,Device somewhat noisy; tracking inconsistent vs expectation,High
+6-Apr-2026,Eth007,Female,4,7,18,34,Bad,flat_signal,Many complete flat lines in the trace; primarily ethoscope/tracking noise; some intervals missing data; exact timing varies by pair,tracking_error,Device somewhat noisy; tracking inconsistent vs expectation,High
+6-Apr-2026,Eth007,Female,5,9,20,34,Bad,flat_signal,Many complete flat lines in the trace; primarily ethoscope/tracking noise; some intervals missing data; exact timing varies by pair,tracking_error,Device somewhat noisy; tracking inconsistent vs expectation,High
+6-Apr-2026,Eth010,Female,1,1,12,34,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+6-Apr-2026,Eth010,Female,2,3,14,34,Bad,flat_signal,Many complete flat lines in the trace; primarily ethoscope/tracking noise; some intervals missing data; exact timing varies by pair,tracking_error,Device somewhat noisy; tracking inconsistent vs expectation,High
+6-Apr-2026,Eth010,Female,3,5,16,34,Bad,flat_signal,Many complete flat lines in the trace; primarily ethoscope/tracking noise; some intervals missing data; exact timing varies by pair,tracking_error,Device somewhat noisy; tracking inconsistent vs expectation,High
+6-Apr-2026,Eth010,Female,4,7,18,34,Bad,flat_signal,Many complete flat lines in the trace; primarily ethoscope/tracking noise; some intervals missing data; exact timing varies by pair,tracking_error,Device somewhat noisy; tracking inconsistent vs expectation,High
+6-Apr-2026,Eth010,Female,5,9,20,34,Bad,flat_signal,Many complete flat lines in the trace; primarily ethoscope/tracking noise; some intervals missing data; exact timing varies by pair,tracking_error,Device somewhat noisy; tracking inconsistent vs expectation,High
+6-Apr-2026,Eth012,Female,1,1,12,34,Bad,no_sleep_deprivation,No sleep deprivation observed in pair,,,High
+6-Apr-2026,Eth012,Female,2,3,14,34,Good,pass_qc,,,,
+6-Apr-2026,Eth012,Female,3,5,16,34,Bad,flat_signal,Many complete flat lines in the trace; primarily ethoscope/tracking noise; some intervals missing data; exact timing varies by pair,tracking_error,Device somewhat noisy; tracking inconsistent vs expectation,High
+6-Apr-2026,Eth012,Female,4,7,18,34,Bad,flat_signal,Many complete flat lines in the trace; primarily ethoscope/tracking noise; some intervals missing data; exact timing varies by pair,tracking_error,Device somewhat noisy; tracking inconsistent vs expectation,High
+6-Apr-2026,Eth012,Female,5,9,20,34,Bad,flat_signal,Many complete flat lines in the trace; primarily ethoscope/tracking noise; some intervals missing data; exact timing varies by pair,tracking_error,Device somewhat noisy; tracking inconsistent vs expectation,High

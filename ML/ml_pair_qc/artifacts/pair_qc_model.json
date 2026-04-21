@@ -1,0 +1,37 @@
+{
+  "feature_names": [
+    "n_valid_bins",
+    "mean_sleep_f",
+    "mean_sleep_y",
+    "std_sleep_f",
+    "std_sleep_y",
+    "corr_fy",
+    "mean_abs_diff_fy",
+    "frac_sat_f",
+    "frac_sat_y",
+    "max_run_extreme_f",
+    "max_run_extreme_y",
+    "std_wake_f",
+    "std_wake_y",
+    "light_std_f",
+    "light_std_y",
+    "light_mean_abs_diff_fy",
+    "light_mean_f_minus_y",
+    "dark_std_f",
+    "dark_std_y",
+    "dark_mean_abs_diff_fy",
+    "dark_mean_f_minus_y",
+    "autocorr_f_lag48",
+    "autocorr_y_lag48"
+  ],
+  "n_train": 145,
+  "n_bad": 105,
+  "n_good": 40,
+  "experiments": [
+    "17-Mar-2026",
+    "27-Mar-2026",
+    "6-Apr-2026",
+    "9-Feb-2026"
+  ],
+  "model_path": "/Users/aniketsharma/Documents/Research Assistant/Ethoscope/ml_pair_qc/artifacts/pair_qc_model.joblib"
+}

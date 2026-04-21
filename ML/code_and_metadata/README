@@ -1,0 +1,16 @@
+This documentation outlines how to take Drosophila velocity data recorded with the ethoscope device and process it with HCTSA or Catch-22 pipeline to get a 
+confusion matrix, classifying accuracy between groups.
+The coccinella pipeline demonstrates a cheap and simple way to take unbiased velocity time-series data from the ethoscope device and uses the 
+statistical classification tool, HCTSA, or its sister software, Catch-22, to classify groups of flies. 
+HCTSA pipeline
+•	To access your ethoscope data in R, you will initially have made a metadata (csv) file, which contains all the information about your experiment. 
+As explained in the rethomics tutorial, this file must contain three columns of information: the date the ethoscope was started, the machine names 
+(ids of ethoscopes used) and a column listing each region of interest. Other columns may be added that denote other variables in your experiment, 
+such as the genotype of the fly or a treatment/compound it is exposed to. 
+•	Once you have generated your metadata file, you can now use the R script, which utilises the rethomics packages, to firstly download your ethoscope 
+files from your server and link the data to the metadata file. This script also allows the generation of single time-series of maximum velocity for each 
+individual fly, saved as a single csv file. 
+•	After the csv files have been generated, you can download the csv files and use the custom python script to remove index and id columns, leaving a 
+single numerical column of velocity time series for each fly, saved in dat file format. 
+•	In matlab, these single files need to be associated with keywords. For this, a txt file needs to be made which gives the name of each .dat time-series 
+file which will be run through HCTSA and the keywords(s) associated with it. The txt file can then be run in HCTSA and processed. 

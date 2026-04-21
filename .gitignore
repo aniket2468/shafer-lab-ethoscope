@@ -1,0 +1,8 @@
+ethoscope_data
+*.Rhistory
+*.RDataTmp
+20240202_ETHOSCOPE_000.img
+Summary
+
+# Generated / large ethoscope outputs (GitHub max 100 MB per file; keep local only)
+Analysis scripts/analysis_output/

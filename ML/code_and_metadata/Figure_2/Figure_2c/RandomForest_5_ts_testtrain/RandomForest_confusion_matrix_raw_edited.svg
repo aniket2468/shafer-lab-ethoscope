@@ -1,0 +1,1937 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg612"
+   width="1233.6576"
+   height="358.45096"
+   viewBox="0 0 1233.6576 358.45096"
+   sodipodi:docname="RandomForest_confusion_matrix_raw_edited.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   inkscape:export-filename="RandomForest_confusion_matrix_raw_edited.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs616">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath801">
+      <rect
+         style="fill:#fafafa;stroke:#000000;stroke-width:2.2096;stroke-linejoin:round"
+         id="rect803"
+         width="267.72049"
+         height="227.1969"
+         x="48.012691"
+         y="17.497837"
+         ry="0" />
+    </clipPath>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-7"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-2"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-4"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-49"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-1"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-8"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-40"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-7"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-19"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-3"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-5"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-25"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-44"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-84"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-6"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect8135"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect69510"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect113217"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect8367"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-6"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-49-1"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-1-5"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-8-5"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-40-4"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-7-7"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-19-6"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-3-5"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-5-6"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-25-9"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-44-3"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-84-7"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4812-84-6-4"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false"
+       lpeversion="0" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect8135-5"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect69510-2"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect113217-5"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect8367-4"
+       is_visible="true"
+       lpeversion="1"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+  </defs>
+  <sodipodi:namedview
+     id="namedview614"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.84892086"
+     inkscape:cx="505.34746"
+     inkscape:cy="143.12288"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g618"
+     showguides="true"
+     showborder="false" />
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Image"
+     id="g618"
+     transform="translate(-2.6590639,-124.98531)">
+    <image
+       width="316"
+       height="278"
+       preserveAspectRatio="none"
+       style="image-rendering:optimizeQuality"
+       xlink:href="data:image/png;base64,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
+AElFTkSuQmCC
+"
+       id="image620"
+       clip-path="url(#clipPath801)"
+       transform="translate(91.031913,139.10229)" />
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="98.735451"
+       y="173.17943"
+       id="text859"><tspan
+         sodipodi:role="line"
+         id="tspan857"
+         x="98.735451"
+         y="173.17943">Solvent</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:13.3333px;line-height:1.25;font-family:sans-serif"
+       x="-295.58646"
+       y="11.176414"
+       id="text859-36"
+       transform="rotate(-90.365427)"><tspan
+         sodipodi:role="line"
+         id="tspan857-1"
+         x="-295.58646"
+         y="11.176414">True Class</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="83.242676"
+       y="192.5229"
+       id="text859-3"><tspan
+         sodipodi:role="line"
+         id="tspan857-6"
+         x="83.242676"
+         y="192.5229">Abamectin</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="51.71637"
+       y="211.12419"
+       id="text859-3-7"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-5"
+         x="51.71637"
+         y="211.12419">Diamide Syn Cpd</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="42.386971"
+       y="228.13338"
+       id="text859-3-3"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56"
+         x="42.386971"
+         y="228.13338">Chlorantraniliprole</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="57.312729"
+       y="246.89072"
+       id="text859-3-3-2"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56-9"
+         x="57.312729"
+         y="246.89072">Cyantraniliprole</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="97.512939"
+       y="264.5188"
+       id="text859-3-3-2-1"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56-9-2"
+         x="97.512939"
+         y="264.5188">Dieldrin</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="61.733955"
+       y="283.05835"
+       id="text859-3-3-2-1-7"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56-9-2-0"
+         x="61.733955"
+         y="283.05835">Flubendiamide</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="73.151779"
+       y="301.01083"
+       id="text859-3-3-2-1-7-9"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56-9-2-0-3"
+         x="73.151779"
+         y="301.01083">Imidacloprid</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="73.606644"
+       y="317.86087"
+       id="text859-3-3-2-1-7-9-6"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56-9-2-0-3-0"
+         x="73.606644"
+         y="317.86087">Pymetrozine</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="69.840378"
+       y="336.14764"
+       id="text859-3-3-2-1-7-9-62"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56-9-2-0-3-6"
+         x="69.840378"
+         y="336.14764">Spiroindoline</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="70.78215"
+       y="355.13705"
+       id="text859-3-3-2-1-7-9-62-1"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56-9-2-0-3-6-8"
+         x="70.78215"
+         y="355.13705">Tetramethrin</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="82.542641"
+       y="372.60217"
+       id="text859-3-3-2-1-7-9-62-1-7"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56-9-2-0-3-6-8-9"
+         x="82.542641"
+         y="372.60217">Ryanodine</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="-241.7948"
+       y="365.84537"
+       id="text859-2"
+       transform="rotate(-50.793635)"><tspan
+         sodipodi:role="line"
+         id="tspan857-0"
+         x="-241.7948"
+         y="365.84537">Solvent</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="-245.42979"
+       y="379.79718"
+       id="text859-3-2"
+       transform="rotate(-50.793635)"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-3"
+         x="-245.42979"
+         y="379.79718">Abamectin</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="-266.90097"
+       y="393.84711"
+       id="text859-3-7-7"
+       transform="rotate(-50.793635)"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-5-5"
+         x="-266.90097"
+         y="393.84711">Diamide Syn Cpd</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="-262.19901"
+       y="409.83255"
+       id="text859-3-3-9"
+       transform="rotate(-50.793635)"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56-2"
+         x="-262.19901"
+         y="409.83255">Chlorantraniliprole</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="-235.62186"
+       y="423.67325"
+       id="text859-3-3-2-2"
+       transform="rotate(-50.793635)"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56-9-8"
+         x="-235.62186"
+         y="423.67325">Cyantraniliprole</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="-184.05315"
+       y="437.10068"
+       id="text859-3-3-2-1-9"
+       transform="rotate(-50.793635)"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56-9-2-7"
+         x="-184.05315"
+         y="437.10068">Dieldrin</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="-207.0208"
+       y="451.85791"
+       id="text859-3-3-2-1-7-3"
+       transform="rotate(-50.793635)"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56-9-2-0-6"
+         x="-207.0208"
+         y="451.85791">Flubendiamide</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="-186.13686"
+       y="467.02298"
+       id="text859-3-3-2-1-7-9-1"
+       transform="rotate(-50.793635)"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56-9-2-0-3-2"
+         x="-186.13686"
+         y="467.02298">Imidacloprid</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="-173.84915"
+       y="479.37167"
+       id="text859-3-3-2-1-7-9-6-9"
+       transform="rotate(-50.793635)"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56-9-2-0-3-0-3"
+         x="-173.84915"
+         y="479.37167">Pymetrozine</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="-166.78246"
+       y="492.79404"
+       id="text859-3-3-2-1-7-9-62-19"
+       transform="rotate(-50.793635)"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56-9-2-0-3-6-4"
+         x="-166.78246"
+         y="492.79404">Spiroindoline</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="-152.79291"
+       y="507.927"
+       id="text859-3-3-2-1-7-9-62-1-78"
+       transform="rotate(-50.793635)"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56-9-2-0-3-6-8-4"
+         x="-152.79291"
+         y="507.927">Tetramethrin</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:sans-serif"
+       x="-130.90337"
+       y="520.22894"
+       id="text859-3-3-2-1-7-9-62-1-7-5"
+       transform="rotate(-50.793635)"><tspan
+         sodipodi:role="line"
+         id="tspan857-6-56-9-2-0-3-6-8-9-0"
+         x="-130.90337"
+         y="520.22894">Ryanodine</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:13.3333px;line-height:1.25;font-family:sans-serif"
+       x="198.81096"
+       y="483.30292"
+       id="text859-0"><tspan
+         sodipodi:role="line"
+         id="tspan857-63"
+         x="198.81096"
+         y="483.30292">Predicted Class</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:13.3333px;line-height:1.25;font-family:sans-serif"
+       x="150.42758"
+       y="140.19458"
+       id="text859-0-2"><tspan
+         sodipodi:role="line"
+         id="tspan857-63-0"
+         x="150.42758"
+         y="140.19458">Trained Random Forest Classifier</tspan></text>
+    <path
+       style="fill:#008000;fill-opacity:0.36;stroke:#000000;stroke-width:0.825241;stroke-miterlimit:10"
+       d="m 834.14386,209.67633 v -11.49185 h 49.0614 49.0614 v 11.49185 11.49187 h -49.0614 -49.0614 z"
+       id="path2721" />
+    <path
+       style="fill:#008000;fill-opacity:0.36;stroke:#000000;stroke-width:0.825241;stroke-miterlimit:10"
+       d="m 834.14386,234.42804 v -11.49187 h 49.0614 49.0614 v 11.49187 11.49186 h -49.0614 -49.0614 z"
+       id="path2760" />
+    <path
+       style="fill:#008000;fill-opacity:0.36;stroke:#000000;stroke-width:0.825241;stroke-miterlimit:10"
+       d="m 834.14386,259.62173 v -11.93385 h 49.0614 49.0614 v 11.93385 11.93387 h -49.0614 -49.0614 z"
+       id="path2799" />
+    <path
+       style="fill:#008000;fill-opacity:0.36;stroke:#000000;stroke-width:0.825241;stroke-miterlimit:10"
+       d="m 834.14386,308.68316 v -11.49187 h 49.0614 49.0614 v 11.49187 11.49185 h -49.0614 -49.0614 z"
+       id="path2877" />
+    <path
+       style="fill:#008000;fill-opacity:0.36;stroke:#000000;stroke-width:0.825241;stroke-miterlimit:10"
+       d="m 834.14386,334.31884 v -11.49186 h 49.0614 49.0614 v 11.49186 11.49188 h -49.0614 -49.0614 z"
+       id="path2916" />
+    <path
+       style="fill:#008000;fill-opacity:0.36;stroke:#000000;stroke-width:0.825241;stroke-miterlimit:10"
+       d="m 834.14386,433.76766 v -11.04987 h 49.0614 49.0614 v 11.04987 11.04987 h -49.0614 -49.0614 z"
+       id="path3072" />
+    <path
+       style="fill:#008000;fill-opacity:0.36;stroke:#000000;stroke-width:0.825241;stroke-miterlimit:10"
+       d="m 834.14386,159.28893 v -11.49185 h 49.0614 49.0614 v 11.49185 11.49187 h -49.0614 -49.0614 z"
+       id="path2643" />
+    <path
+       style="fill:#ff0404;fill-opacity:0.36;stroke:#000000;stroke-width:0.825241;stroke-miterlimit:10"
+       d="M 834.79511,184.21825 V 172.7264 h 49.0614 49.0614 v 11.49185 11.49187 h -49.0614 -49.0614 z"
+       id="path2643-7" />
+    <path
+       style="fill:#ff0404;fill-opacity:0.36;stroke:#000000;stroke-width:0.825241;stroke-miterlimit:10"
+       d="M 833.5064,284.24575 V 272.7539 h 49.0614 49.0614 v 11.49185 11.49187 h -49.0614 -49.0614 z"
+       id="path2643-7-4-4" />
+    <path
+       style="fill:#ff0404;fill-opacity:0.36;stroke:#000000;stroke-width:0.825241;stroke-miterlimit:10"
+       d="m 834.17172,358.23241 v -11.49185 h 49.0614 49.0614 v 11.49185 11.49187 h -49.0614 -49.0614 z"
+       id="path2643-7-4-3" />
+    <path
+       style="fill:#ff0404;fill-opacity:0.36;stroke:#000000;stroke-width:0.825241;stroke-miterlimit:10"
+       d="m 834.10028,382.84818 v -11.49185 h 49.0614 49.0614 v 11.49185 11.49187 h -49.0614 -49.0614 z"
+       id="path2643-7-4-0" />
+    <path
+       style="fill:#ff0404;fill-opacity:0.36;stroke:#000000;stroke-width:0.825241;stroke-miterlimit:10"
+       d="m 834.1509,408.77264 v -11.49185 h 49.0614 49.0614 v 11.49185 11.49187 h -49.0614 -49.0614 z"
+       id="path2643-7-4-7" />
+    <g
+       id="g5031"
+       transform="matrix(2.0478638,0,0,1.3333333,-454.38781,-146.60577)">
+      <rect
+         y="204.63634"
+         x="450.29565"
+         height="240.41756"
+         width="374.35553"
+         id="rect3941"
+         style="opacity:1;fill:none;fill-opacity:0.970443;stroke:#000000;stroke-width:1.88605;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:original-d="m 449.93294,221.294 c 125.24261,-0.34678 249.90712,-7.5e-4 374.8593,0"
+         inkscape:path-effect="#path-effect4812-6"
+         inkscape:connector-curvature="0"
+         id="path4810"
+         d="m 449.93294,221.294 c 125.24261,0 249.90712,0 374.8593,0"
+         style="fill:none;stroke:#000000;stroke-width:0.838847px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:original-d="m 450.17828,219.90911 c 125.12354,-0.34678 249.66954,-7.5e-4 374.50292,0"
+         inkscape:path-effect="#path-effect4812-84-49-1"
+         inkscape:connector-curvature="0"
+         id="path4810-5-7"
+         d="m 450.17828,219.90911 c 125.12354,0 249.66954,0 374.50292,0"
+         style="fill:none;stroke:#000000;stroke-width:0.838448px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:original-d="m 450.17828,238.94047 c 125.12354,-0.34678 249.66954,-7.5e-4 374.50292,0"
+         inkscape:path-effect="#path-effect4812-84-1-5"
+         inkscape:connector-curvature="0"
+         id="path4810-5-2"
+         d="m 450.17828,238.94047 c 125.12354,0 249.66954,0 374.50292,0"
+         style="fill:none;stroke:#000000;stroke-width:0.838448px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:original-d="m 450.17828,257.62581 c 125.12354,-0.34678 249.66954,-7.5e-4 374.50292,0"
+         inkscape:path-effect="#path-effect4812-84-8-5"
+         inkscape:connector-curvature="0"
+         id="path4810-5-4"
+         d="m 450.17828,257.62581 c 125.12354,0 249.66954,0 374.50292,0"
+         style="fill:none;stroke:#000000;stroke-width:0.838448px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:original-d="m 450.17828,276.31115 c 125.12354,-0.34678 249.66954,-7.5e-4 374.50292,0"
+         inkscape:path-effect="#path-effect4812-84-40-4"
+         inkscape:connector-curvature="0"
+         id="path4810-5-71"
+         d="m 450.17828,276.31115 c 125.12354,0 249.66954,0 374.50292,0"
+         style="fill:none;stroke:#000000;stroke-width:0.838448px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:original-d="m 450.17828,294.99649 c 125.12354,-0.34678 249.66954,-7.5e-4 374.50292,0"
+         inkscape:path-effect="#path-effect4812-84-7-7"
+         inkscape:connector-curvature="0"
+         id="path4810-5-20"
+         d="m 450.17828,294.99649 c 125.12354,0 249.66954,0 374.50292,0"
+         style="fill:none;stroke:#000000;stroke-width:0.838448px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:original-d="m 450.17828,314.02785 c 125.12354,-0.34678 249.66954,-7.5e-4 374.50292,0"
+         inkscape:path-effect="#path-effect4812-84-19-6"
+         inkscape:connector-curvature="0"
+         id="path4810-5-6"
+         d="m 450.17828,314.02785 c 125.12354,0 249.66954,0 374.50292,0"
+         style="fill:none;stroke:#000000;stroke-width:0.838448px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:original-d="m 450.17828,332.36717 c 125.12354,-0.34678 249.66954,-7.5e-4 374.50292,0"
+         inkscape:path-effect="#path-effect4812-84-3-5"
+         inkscape:connector-curvature="0"
+         id="path4810-5-43"
+         d="m 450.17828,332.36717 c 125.12354,0 249.66954,0 374.50292,0"
+         style="fill:none;stroke:#000000;stroke-width:0.838448px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:original-d="m 450.17828,351.05251 c 125.12354,-0.34678 249.66954,-7.5e-4 374.50292,0"
+         inkscape:path-effect="#path-effect4812-84-5-6"
+         inkscape:connector-curvature="0"
+         id="path4810-5-5"
+         d="m 450.17828,351.05251 c 125.12354,0 249.66954,0 374.50292,0"
+         style="fill:none;stroke:#000000;stroke-width:0.838448px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:original-d="m 450.17828,370.08387 c 125.12354,-0.34678 249.66954,-7.5e-4 374.50292,0"
+         inkscape:path-effect="#path-effect4812-84-25-9"
+         inkscape:connector-curvature="0"
+         id="path4810-5-47"
+         d="m 450.17828,370.08387 c 125.12354,0 249.66954,0 374.50292,0"
+         style="fill:none;stroke:#000000;stroke-width:0.838448px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:original-d="m 450.17828,388.76921 c 125.12354,-0.34678 249.66954,-7.5e-4 374.50292,0"
+         inkscape:path-effect="#path-effect4812-84-44-3"
+         inkscape:connector-curvature="0"
+         id="path4810-5-01"
+         d="m 450.17828,388.76921 c 125.12354,0 249.66954,0 374.50292,0"
+         style="fill:none;stroke:#000000;stroke-width:0.838448px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:original-d="m 450.17828,407.45455 c 125.12354,-0.34678 249.66954,-7.5e-4 374.50292,0"
+         inkscape:path-effect="#path-effect4812-84-84-7"
+         inkscape:connector-curvature="0"
+         id="path4810-5-8"
+         d="m 450.17828,407.45455 c 125.12354,0 249.66954,0 374.50292,0"
+         style="fill:none;stroke:#000000;stroke-width:0.838448px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:original-d="m 450.17828,426.48592 c 125.12354,-0.34678 249.66954,-7.5e-4 374.50292,0"
+         inkscape:path-effect="#path-effect4812-84-6-4"
+         inkscape:connector-curvature="0"
+         id="path4810-5-09"
+         d="m 450.17828,426.48592 c 125.12354,0 249.66954,0 374.50292,0"
+         style="fill:none;stroke:#000000;stroke-width:0.838448px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:18.6667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="936.35352"
+       y="265.80811"
+       id="text5035-7-8-4-1-65"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-8-3-4-6"
+         x="936.35352"
+         y="265.80811"
+         style="font-size:17.3333px;stroke-width:1">Chlorantran/Solvent</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:18.6667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="936.85449"
+       y="439.71359"
+       id="text5035-7-8-4-1-9-96"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-8-3-4-2-3"
+         x="936.85449"
+         y="439.71359"
+         style="font-size:17.3333px;stroke-width:1">Flubendiamide</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:18.6667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="471.09238"
+       y="164.93805"
+       id="text5035-7-5"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3"
+         x="471.09238"
+         y="164.93805"
+         style="font-size:17.3333px;stroke-width:1">Abamectin</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:18.6667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="469.52661"
+       y="191.2318"
+       id="text5035-7-5-2"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-5"
+         x="469.52661"
+         y="191.2318"
+         style="font-size:17.3333px;stroke-width:1">Diamide Syn Cpd</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:18.6667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="937.95428"
+       y="215.44977"
+       id="text5035-7-5-2-7"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-5-76"
+         x="937.95428"
+         y="215.44977"
+         style="font-size:17.3333px;stroke-width:1">Solvent</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="470.89722"
+       y="214.0683"
+       id="text5035-7-5-9"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6"
+         x="470.89722"
+         y="214.0683"
+         style="font-size:17.3333px;stroke-width:1">Chlorantraniliprole</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="934.42633"
+       y="165.59393"
+       id="text5035-7-5-9-1"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-1"
+         x="934.42633"
+         y="165.59393"
+         style="font-size:17.3333px;stroke-width:1">Dieldrin</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;fill:#000000;fill-opacity:1;stroke-width:1"
+       x="871.45044"
+       y="166.53209"
+       id="text82624"><tspan
+         sodipodi:role="line"
+         id="tspan82622"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#000000;fill-opacity:1;stroke-width:1"
+         x="871.45044"
+         y="166.53209">35</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;fill:#000000;fill-opacity:1;stroke-width:1"
+       x="871.2226"
+       y="192.91969"
+       id="text82624-3"><tspan
+         sodipodi:role="line"
+         id="tspan82622-2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#000000;fill-opacity:1;stroke-width:1"
+         x="871.2226"
+         y="192.91969">27</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;fill:#000000;fill-opacity:1;stroke-width:1"
+       x="871.2226"
+       y="216.45416"
+       id="text82624-3-0"><tspan
+         sodipodi:role="line"
+         id="tspan82622-2-6"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#000000;fill-opacity:1;stroke-width:1"
+         x="871.2226"
+         y="216.45416">29</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;fill:#000000;fill-opacity:1;stroke-width:1"
+       x="871.48688"
+       y="240.78021"
+       id="text82624-3-0-1"><tspan
+         sodipodi:role="line"
+         id="tspan82622-2-6-5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#000000;fill-opacity:1;stroke-width:1"
+         x="871.48688"
+         y="240.78021">33</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;fill:#000000;fill-opacity:1;stroke-width:1"
+       x="871.57806"
+       y="266.90375"
+       id="text82624-3-0-5"><tspan
+         sodipodi:role="line"
+         id="tspan82622-2-6-4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#000000;fill-opacity:1;stroke-width:1"
+         x="871.57806"
+         y="266.90375">36</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;fill:#000000;fill-opacity:1;stroke-width:1"
+       x="871.45044"
+       y="291.71552"
+       id="text82624-3-0-5-7"><tspan
+         sodipodi:role="line"
+         id="tspan82622-2-6-4-6"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#000000;fill-opacity:1;stroke-width:1"
+         x="871.45044"
+         y="291.71552">18</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;fill:#000000;fill-opacity:1;stroke-width:1"
+       x="871.2226"
+       y="315.15854"
+       id="text82624-3-0-5-7-5"><tspan
+         sodipodi:role="line"
+         id="tspan82622-2-6-4-6-6"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#000000;fill-opacity:1;stroke-width:1"
+         x="871.2226"
+         y="315.15854">56</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;fill:#000000;fill-opacity:1;stroke-width:1"
+       x="871.45044"
+       y="340.15274"
+       id="text82624-3-0-5-7-5-9"><tspan
+         sodipodi:role="line"
+         id="tspan82622-2-6-4-6-6-3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#000000;fill-opacity:1;stroke-width:1"
+         x="871.45044"
+         y="340.15274">27</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;fill:#000000;fill-opacity:1;stroke-width:1"
+       x="871.45044"
+       y="366.7496"
+       id="text82624-3-0-5-7-5-9-7"><tspan
+         sodipodi:role="line"
+         id="tspan82622-2-6-4-6-6-3-4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#000000;fill-opacity:1;stroke-width:1"
+         x="871.45044"
+         y="366.7496">40</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;fill:#000000;fill-opacity:1;stroke-width:1"
+       x="871.2226"
+       y="390.84845"
+       id="text82624-3-0-5-7-5-9-5"><tspan
+         sodipodi:role="line"
+         id="tspan82622-2-6-4-6-6-3-2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#000000;fill-opacity:1;stroke-width:1"
+         x="871.2226"
+         y="390.84845">40</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;fill:#000000;fill-opacity:1;stroke-width:1"
+       x="871.2226"
+       y="414.98993"
+       id="text82624-3-0-5-7-5-9-5-5"><tspan
+         sodipodi:role="line"
+         id="tspan82622-2-6-4-6-6-3-2-4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#000000;fill-opacity:1;stroke-width:1"
+         x="871.2226"
+         y="414.98993">31</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;fill:#000000;fill-opacity:1;stroke-width:1"
+       x="871.31372"
+       y="439.82635"
+       id="text82624-3-0-5-7-5-9-5-7"><tspan
+         sodipodi:role="line"
+         id="tspan82622-2-6-4-6-6-3-2-44"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#000000;fill-opacity:1;stroke-width:1"
+         x="871.31372"
+         y="439.82635">40</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="470.608"
+       y="240.19005"
+       id="text5035-7-5-9-3"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6"
+         x="470.608"
+         y="240.19005"
+         style="font-size:17.3333px;stroke-width:1">Cyantraniliprole</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="937.7334"
+       y="365.29663"
+       id="text5035-7-5-9-3-93"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-90"
+         x="937.7334"
+         y="365.29663"
+         style="font-size:17.3333px;stroke-width:1">Flubendiamide*</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="937.4306"
+       y="190.68073"
+       id="text5035-7-5-9-3-5"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-9"
+         x="937.4306"
+         y="190.68073"
+         style="font-size:17.3333px;stroke-width:1">Diamide Syn Cpd</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="470.42334"
+       y="289.45999"
+       id="text5035-7-5-9-3-2"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7"
+         x="470.42334"
+         y="289.45999"
+         style="font-size:17.3333px;stroke-width:1">Flubendiamide</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="469.52661"
+       y="315.77267"
+       id="text5035-7-5-9-3-2-0"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7-9"
+         x="469.52661"
+         y="315.77267"
+         style="font-size:17.3333px;stroke-width:1">Imidacloprid</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="471.14276"
+       y="339.5336"
+       id="text5035-7-5-9-3-2-0-3"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7-9-6"
+         x="471.14276"
+         y="339.5336"
+         style="font-size:17.3333px;stroke-width:1">Pymetrozine</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="469.52661"
+       y="365.61432"
+       id="text5035-7-5-9-3-2-0-3-0"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7-9-6-6"
+         x="469.52661"
+         y="365.61432"
+         style="font-size:17.3333px;stroke-width:1">Ryanodine</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="470.08521"
+       y="391.60223"
+       id="text5035-7-5-9-3-2-0-3-0-2"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7-9-6-6-6"
+         x="470.08521"
+         y="391.60223"
+         style="font-size:17.3333px;stroke-width:1">Solvent Control</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="470.08521"
+       y="416.00449"
+       id="text5035-7-5-9-3-2-0-3-0-2-1"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7-9-6-6-6-8"
+         x="470.08521"
+         y="416.00449"
+         style="font-size:17.3333px;stroke-width:1">Spiroindoline</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="472.49545"
+       y="439.61316"
+       id="text5035-7-5-9-3-2-0-3-0-2-1-7"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7-9-6-6-6-8-9"
+         x="472.49545"
+         y="439.61316"
+         style="font-size:17.3333px;stroke-width:1">Tetramethrin</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="470.85229"
+       y="265.10132"
+       id="text5035-7-5-9-3-9"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-1"
+         x="470.85229"
+         y="265.10132"
+         style="font-size:17.3333px;stroke-width:1">Dieldrin</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:18.6667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="638.45807"
+       y="166.27379"
+       id="text5035-7-5-20"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-2"
+         x="638.45807"
+         y="166.27379"
+         style="font-size:17.3333px;stroke-width:1">Abamectin</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:18.6667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="935.09991"
+       y="415.77386"
+       id="text5035-7-5-20-5"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-2-0"
+         x="935.09991"
+         y="415.77386"
+         style="font-size:17.3333px;stroke-width:1">Solv./Pymet./Spiroin.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:18.6667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="637.79791"
+       y="192.56752"
+       id="text5035-7-5-2-3"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-5-7"
+         x="637.79791"
+         y="192.56752"
+         style="font-size:17.3333px;stroke-width:1">Pymetrozine</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:18.6667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="937.05133"
+       y="241.2514"
+       id="text5035-7-5-2-3-1"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-5-7-4"
+         x="937.05133"
+         y="241.2514"
+         style="font-size:17.3333px;stroke-width:1">Pymet/Spiroin/Tetram</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="639.16864"
+       y="215.40404"
+       id="text5035-7-5-9-5"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-9"
+         x="639.16864"
+         y="215.40404"
+         style="font-size:17.3333px;stroke-width:1">Chlorantraniliprole</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="638.87933"
+       y="241.52577"
+       id="text5035-7-5-9-3-22"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-8"
+         x="638.87933"
+         y="241.52577"
+         style="font-size:17.3333px;stroke-width:1">Cyantraniliprole</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="638.69464"
+       y="290.79572"
+       id="text5035-7-5-9-3-2-9"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7-7"
+         x="638.69464"
+         y="290.79572"
+         style="font-size:17.3333px;stroke-width:1">Fluben/Solv/Abamect.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="937.32013"
+       y="314.83551"
+       id="text5035-7-5-9-3-2-9-4"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7-7-8"
+         x="937.32013"
+         y="314.83551"
+         style="font-size:17.3333px;stroke-width:1">Spiroindoline</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="637.79791"
+       y="317.10843"
+       id="text5035-7-5-9-3-2-0-36"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7-9-1"
+         x="637.79791"
+         y="317.10843"
+         style="font-size:17.3333px;stroke-width:1">Imidacloprid</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="639.41412"
+       y="340.86932"
+       id="text5035-7-5-9-3-2-0-3-2"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7-9-6-9"
+         x="639.41412"
+         y="340.86932"
+         style="font-size:17.3333px;stroke-width:1">Pymetrozine</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="637.79791"
+       y="366.95004"
+       id="text5035-7-5-9-3-2-0-3-0-3"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7-9-6-6-1"
+         x="637.79791"
+         y="366.95004"
+         style="font-size:17.3333px;stroke-width:1">Solvent/Dieldrin</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="638.35651"
+       y="392.93796"
+       id="text5035-7-5-9-3-2-0-3-0-2-9"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7-9-6-6-6-4"
+         x="638.35651"
+         y="392.93796"
+         style="font-size:17.3333px;stroke-width:1">Solvent/Dieldrin</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="937.47461"
+       y="339.81781"
+       id="text5035-7-5-9-3-2-0-3-0-2-9-1"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7-9-6-6-6-4-2"
+         x="937.47461"
+         y="339.81781"
+         style="font-size:17.3333px;stroke-width:1">Abamectin</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="638.35651"
+       y="417.34027"
+       id="text5035-7-5-9-3-2-0-3-0-2-1-78"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7-9-6-6-6-8-4"
+         x="638.35651"
+         y="417.34027"
+         style="font-size:17.3333px;stroke-width:1">Dieldrin</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="938.77563"
+       y="390.40915"
+       id="text5035-7-5-9-3-2-0-3-0-2-1-78-8"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7-9-6-6-6-8-4-8"
+         x="938.77563"
+         y="390.40915"
+         style="font-size:17.3333px;stroke-width:1">Abamectin/Ryanodine</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="640.76685"
+       y="440.94885"
+       id="text5035-7-5-9-3-2-0-3-0-2-1-7-5"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7-9-6-6-6-8-9-0"
+         x="640.76685"
+         y="440.94885"
+         style="font-size:17.3333px;stroke-width:1">Abamectin/Dieldrin</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="934.33783"
+       y="290.73636"
+       id="text5035-7-5-9-3-2-0-3-0-2-1-7-5-3"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-7-9-6-6-6-8-9-0-9"
+         x="934.33783"
+         y="290.73636"
+         style="font-size:17.3333px;stroke-width:1">Various.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="639.1236"
+       y="266.43707"
+       id="text5035-7-5-9-3-9-3"><tspan
+         sodipodi:role="line"
+         id="tspan5033-2-3-6-6-1-6"
+         x="639.1236"
+         y="266.43707"
+         style="font-size:17.3333px;stroke-width:1">Dieldrin</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.844352px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 634.72956,125.59883 c 0,107.11973 0,214.23874 0,321.35707"
+       id="path8133"
+       inkscape:path-effect="#path-effect8135-5"
+       inkscape:original-d="m 634.72956,125.59883 c 10e-4,107.11973 10e-4,214.23874 0,321.35707" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.844352px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 933.44562,125.59883 c 0,107.11972 0,214.23874 0,321.35706"
+       id="path8133-5-1"
+       inkscape:path-effect="#path-effect69510-2"
+       inkscape:original-d="m 933.44562,125.59883 c 0.001,107.11972 0.001,214.23874 0,321.35706" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.844352px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1133.2172,125.59883 c 0,107.11972 0,214.23874 0,321.35706"
+       id="path8133-5-1-3"
+       inkscape:path-effect="#path-effect113217-5"
+       inkscape:original-d="m 1133.2172,125.59883 c 10e-4,107.11972 10e-4,214.23874 0,321.35706" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.844352px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 833.44085,125.59883 c 0,107.11973 0,214.23874 0,321.35707"
+       id="path8365"
+       inkscape:path-effect="#path-effect8367-4"
+       inkscape:original-d="m 833.44085,125.59883 c 0.001,107.11973 0.001,214.23874 0,321.35707" />
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;stroke-width:1"
+       x="1172.5688"
+       y="340.83051"
+       id="text82624-0-85-1-5-6"><tspan
+         sodipodi:role="line"
+         id="tspan82622-4-6-1-9-2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:1"
+         x="1172.5688"
+         y="340.83051">18</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;stroke-width:1"
+       x="1172.4961"
+       y="365.42609"
+       id="text82624-0-85-1-5-6-1"><tspan
+         sodipodi:role="line"
+         id="tspan82622-4-6-1-9-2-7"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:1"
+         x="1172.4961"
+         y="365.42609">20</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;stroke-width:1"
+       x="1173.6355"
+       y="416.49457"
+       id="text82624-0-85-1-5-8-7"><tspan
+         sodipodi:role="line"
+         id="tspan82622-4-6-1-9-4-4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:1"
+         x="1173.6355"
+         y="416.49457">15</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;stroke-width:1"
+       x="1173.1797"
+       y="266.8573"
+       id="text82624-0-85-1-5-8-4-6"><tspan
+         sodipodi:role="line"
+         id="tspan82622-4-6-1-9-4-7-3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:1"
+         x="1173.1797"
+         y="266.8573">18</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;stroke-width:1"
+       x="1173.2435"
+       y="291.91653"
+       id="text82624-0-85-1-5-8-8-1"><tspan
+         sodipodi:role="line"
+         id="tspan82622-4-6-1-9-4-1-7"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:1"
+         x="1173.2435"
+         y="291.91653">10</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;stroke-width:1"
+       x="1173.3711"
+       y="168.11578"
+       id="text82624-0-85-1-5-8-8-0"><tspan
+         sodipodi:role="line"
+         id="tspan82622-4-6-1-9-4-1-3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:1"
+         x="1173.3711"
+         y="168.11578">35</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;stroke-width:1"
+       x="1173.28"
+       y="192.10683"
+       id="text82624-0-85-1-5-8-8-0-0"><tspan
+         sodipodi:role="line"
+         id="tspan82622-4-6-1-9-4-1-3-4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:1"
+         x="1173.28"
+         y="192.10683">18</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;stroke-width:1"
+       x="1173.0156"
+       y="217.02061"
+       id="text82624-0-85-1-5-8-8-0-0-4"><tspan
+         sodipodi:role="line"
+         id="tspan82622-4-6-1-9-4-1-3-4-4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:1"
+         x="1173.0156"
+         y="217.02061">21</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;stroke-width:1"
+       x="1173.8431"
+       y="242.12506"
+       id="text82624-0-85-1-5-8-8-0-0-4-9"><tspan
+         sodipodi:role="line"
+         id="tspan82622-4-6-1-9-4-1-3-4-4-2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:1"
+         x="1173.8431"
+         y="242.12506">17</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;stroke-width:1"
+       x="1173.0156"
+       y="315.91669"
+       id="text82624-0-85-1-5-8-8-0-0-4-5"><tspan
+         sodipodi:role="line"
+         id="tspan82622-4-6-1-9-4-1-3-4-4-9"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:1"
+         x="1173.0156"
+         y="315.91669">33</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;stroke-width:1"
+       x="1173.0156"
+       y="389.73532"
+       id="text82624-0-85-1-5-8-8-0-0-4-5-8"><tspan
+         sodipodi:role="line"
+         id="tspan82622-4-6-1-9-4-1-3-4-4-9-5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:1"
+         x="1173.0156"
+         y="389.73532">20</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:18.6667px;line-height:1.25;font-family:hack;-inkscape-font-specification:hack;stroke-width:1"
+       x="1173.0156"
+       y="441.40833"
+       id="text82624-0-85-1-5-8-8-0-0-4-5-8-1"><tspan
+         sodipodi:role="line"
+         id="tspan82622-4-6-1-9-4-1-3-4-4-9-5-8"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:1"
+         x="1173.0156"
+         y="441.40833">20</tspan></text>
+    <path
+       style="fill:#8eccee;fill-opacity:0.458995;stroke:#000000;stroke-width:0.215353;stroke-miterlimit:10"
+       d="m 469.7055,136.56267 v -11.30348 h 82.00788 82.00788 v 11.30348 11.30348 H 551.71338 469.7055 Z"
+       id="path158887" />
+    <path
+       style="fill:#8eccee;fill-opacity:0.458995;stroke:#000000;stroke-width:0.609109;stroke-miterlimit:10"
+       d="m 634.74008,136.70507 v -11.092 h 98.84931 98.8493 v 11.092 11.092 h -98.8493 -98.84931 z"
+       id="path161134" />
+    <path
+       style="fill:#8eccee;fill-opacity:0.458995;stroke:#000000;stroke-width:0.609109;stroke-miterlimit:10"
+       d="m 833.74362,136.70507 v -11.092 h 49.26155 49.2615 v 11.092 11.092 h -49.2615 -49.26155 z"
+       id="path161173" />
+    <path
+       style="fill:#8eccee;fill-opacity:0.458995;stroke:#000000;stroke-width:0.609109;stroke-miterlimit:10"
+       d="m 933.57167,136.70507 v -11.092 h 99.17543 99.1755 v 11.092 11.092 h -99.1755 -99.17543 z"
+       id="path161212" />
+    <path
+       style="fill:#8eccee;fill-opacity:0.458995;stroke:#000000;stroke-width:0.609109;stroke-miterlimit:10"
+       d="m 1133.2276,136.70507 v -11.092 h 48.9354 48.9352 v 11.092 11.092 h -48.9352 -48.9354 z"
+       id="path161251" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:18.6667px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="510.07855"
+       y="142.98163"
+       id="text5035"><tspan
+         sodipodi:role="line"
+         id="tspan5033"
+         x="510.07855"
+         y="142.98163"
+         style="font-size:17.3333px;stroke-width:1">Compound</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="660.64655"
+       y="142.98163"
+       id="text5035-2"><tspan
+         sodipodi:role="line"
+         id="tspan5033-5"
+         x="660.64655"
+         y="142.98163"
+         style="font-size:17.3333px;stroke-width:1">1st Classification</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:16px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="834.80365"
+       y="141.9686"
+       id="text5035-2-0"><tspan
+         sodipodi:role="line"
+         id="tspan5033-5-6"
+         x="834.80365"
+         y="141.9686"
+         style="font-size:16px;stroke-width:1">% Predicted </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:16px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="1134.1514"
+       y="141.9686"
+       id="text5035-2-0-8"><tspan
+         sodipodi:role="line"
+         id="tspan5033-5-6-6"
+         x="1134.1514"
+         y="141.9686"
+         style="font-size:16px;stroke-width:1">% Predicted </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:17.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+       x="959.81818"
+       y="142.98163"
+       id="text5035-2-3"><tspan
+         sodipodi:role="line"
+         id="tspan5033-5-5"
+         x="959.81818"
+         y="142.98163"
+         style="font-size:17.3333px;stroke-width:1">2nd Classification</tspan></text>
+  </g>
+</svg>
