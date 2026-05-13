@@ -18,15 +18,14 @@ OUTPUT_DIR <- "Analysis scripts/analysis_output/"
 #    Names must match the file prefix used in OUTPUT_DIR:
 #    e.g. "Eth007" → Sleep_Eth007_Focal.txt / Sleep_Eth007_Yoked.txt
 ETHOSCOPES <- c(
-  "Eth008", "Eth009", "Eth011", "Eth014", "Eth015",          # Male
-  "Eth007", "Eth010", "Eth012"                               # Female
+  "Eth007", "Eth009", "Eth011", "Eth013",    # Male
+  "Eth008", "Eth010", "Eth012", "Eth014"     # Female
 )
 
 # 1b. Sex assignment for each ethoscope (used for group labels & separator).
 SEX_GROUPS <- c(
-  Eth008 = "Male",   Eth009 = "Male",   Eth011 = "Male",
-  Eth014 = "Male",   Eth015 = "Male", Eth007 = "Female",
-  Eth010 = "Female", Eth012 = "Female"
+  Eth007 = "Male",   Eth009 = "Male",   Eth011 = "Male",   Eth013 = "Male",
+  Eth008 = "Female", Eth010 = "Female", Eth012 = "Female", Eth014 = "Female"
 )
 
 # 2. Label shown on the LEFT side of the plot for each ethoscope group.
@@ -34,15 +33,10 @@ SEX_GROUPS <- c(
 #    Use \n for line breaks. Any ethoscope not listed here falls back
 #    to using its own ID as the label.
 ETH_LABELS <- c(
-  
-  Eth008 = "Eth008\n(Male)",
-  Eth009 = "Eth009\n(Male)",
-  Eth011 = "Eth011\n(Male)",
-  Eth014 = "Eth014\n(Male)",
-  Eth015 = "Eth015\n(Male)",
-  Eth007 = "Eth007\n(Female)",
-  Eth010 = "Eth010\n(Female)",
-  Eth012 = "Eth012\n(Female)"
+  Eth007 = "Eth007\n(Male)",   Eth009 = "Eth009\n(Male)",
+  Eth011 = "Eth011\n(Male)",   Eth013 = "Eth013\n(Male)",
+  Eth008 = "Eth008\n(Female)", Eth010 = "Eth010\n(Female)",
+  Eth012 = "Eth012\n(Female)", Eth014 = "Eth014\n(Female)"
 )
 
 # 3. Yoking pairs.
@@ -63,15 +57,14 @@ PLOT_PAIRS <- "all"
 # 4b. Ethoscope-specific pairs to EXCLUDE.
 #     Named list: ethoscope ID → integer vector of pair numbers to drop.
 EXCLUDE_PAIRS <- list(
-  Eth007 = c(3, 4, 5),
-  Eth008 = c(2, 5),
-  Eth009 = c(3, 5),
-  Eth010 = c(1, 2, 5),
-  Eth011 = c(3),
-  Eth012 = c(1, 3),
-  Eth013 = c(1, 2, 3, 4, 5),
-  Eth014 = c(1, 2, 5),
-  Eth015 = c(1)
+  Eth007 = c(),
+  Eth008 = c(),
+  Eth009 = c(),
+  Eth010 = c(),
+  Eth011 = c(),
+  Eth012 = c(),
+  Eth013 = c(),
+  Eth014 = c()
 )
 
 # 5. Line colours and legend text
@@ -84,8 +77,17 @@ YOKED_LABEL <- "Yoked (Control)"
 #    Set to 0 to keep all data.
 SKIP_ROWS <- 0
 
+# 6b. Maximum days to plot.
+#     Set to a number (e.g. 8) to fix the plot window, or NULL to auto-detect
+#     from the data (uses the 95th percentile of individual tube lengths).
+MAX_DAYS <- 8
+
 # 7. Output PDF filename (saved inside OUTPUT_DIR)
-OUTPUT_FILE <- "Paired_Actogram_06APR_Expt.pdf"
+OUTPUT_FILE <- "Paired_Actogram_04MAY_Expt.pdf"
+
+# 8. PDF height: fixed inches per actogram row (so few rows = short page, not tall rows)
+ROW_HEIGHT_IN <- 0.6
+HEIGHT_EXTRA_IN <- 2   # title, legend, margins
 
 # ============================================================
 # LOAD DATA — No edits needed below this line
@@ -170,12 +172,18 @@ dt[, row_num := row_num - SKIP_ROWS]
 # AUTO-DETECT DURATION FROM ALL LOADED FILES
 # ============================================================
 
-# 75th percentile of per-individual data length — robust to early deaths
 individual_max_rows <- dt[, .(max_row = max(row_num)), by = .(ethoscope, tube, condition)]
-max_row  <- as.numeric(quantile(individual_max_rows$max_row, 0.75))
-max_days <- (max_row - 1) * 0.5 / 24
 
-cat(sprintf("\nDetected recording duration: %.1f h (%.2f days)\n", max_row * 0.5, max_days))
+if (!is.null(MAX_DAYS)) {
+  max_row  <- MAX_DAYS * 24 / 0.5          # convert days → 30-min bin count
+  max_days <- MAX_DAYS
+  cat(sprintf("\nUsing fixed duration: %.1f h (%.2f days)\n", max_row * 0.5, max_days))
+} else {
+  # 95th percentile — robust to early deaths while not cutting the run short
+  max_row  <- as.numeric(quantile(individual_max_rows$max_row, 0.95))
+  max_days <- (max_row - 1) * 0.5 / 24
+  cat(sprintf("\nAuto-detected recording duration: %.1f h (%.2f days)\n", max_row * 0.5, max_days))
+}
 
 # Filter to that duration
 dt <- dt[row_num <= max_row]
@@ -340,8 +348,8 @@ p <- ggplot(dt, aes(
 # SAVE
 # ============================================================
 
-plot_height <- max(8, n_rows * 0.6 + 2)
+plot_height <- n_rows * ROW_HEIGHT_IN + HEIGHT_EXTRA_IN
 out_path    <- paste0(OUTPUT_DIR, OUTPUT_FILE)
-ggsave(out_path, p, width = 16, height = plot_height)
+ggsave(out_path, p, width = 16, height = plot_height, limitsize = FALSE)
 
 cat(sprintf("\n✓ Saved: %s  (%.0f rows × 16 × %.1f inches)\n", out_path, n_rows, plot_height))

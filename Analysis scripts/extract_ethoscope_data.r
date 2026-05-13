@@ -4,11 +4,11 @@ library(sleepr)
 
 setwd("/Users/aniketsharma/Documents/Research Assistant/Ethoscope/")
 
-output_file <- "Analysis scripts/analysis_output/ethoscope_007.txt"
+output_file <- "Analysis scripts/analysis_output/ethoscope_015.txt"
 
 metadata <- data.table(
-  machine_name = "ETHOSCOPE_007",
-  date = "2026-03-30",
+  machine_name = "ETHOSCOPE_015",
+  date = "2026-04-24",
   region_id = 1:20
 )
 
