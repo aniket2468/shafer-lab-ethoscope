@@ -1,6 +1,6 @@
 rm(list=ls())
 
-df <- read.delim("/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis scripts/analysis_output/all_ethoscopes_merged_04MAY.txt", header = T)
+df <- read.delim("/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis scripts/analysis_output/all_ethoscopes_merged_13MAY.txt", header = T)
 
 datSortBin <- function (input, n.days, cat.names = c("Control", "Experimental"), ethoscope.id, mins.trim) {
   library(stringr)
@@ -64,6 +64,6 @@ datSortBin <- function (input, n.days, cat.names = c("Control", "Experimental"),
   
 }
 
-df.sorted <- datSortBin(input = df, n.days = 6, cat.names = c("Eth007", "Eth008", "Eth009", "Eth010", "Eth011", "Eth012", "Eth013", "Eth014", "Eth015"), ethoscope.id = c("007cf6", "008be7", "009c62", "010793", "011a1c", "012bbb", "013191", "014a2d", "0159c9"), mins.trim = c(1255, 1255, 1255, 1250, 1255, 1250, 1250, 1250, 1250))
+df.sorted <- datSortBin(input = df, n.days = 6, cat.names = c("Eth008", "Eth009", "Eth011"), ethoscope.id = c("008cb0", "009fbc", "011534"), mins.trim = c(1105, 1105, 1100))
 
-saveRDS(df.sorted, "/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis scripts/analysis_output/all_ethoscopes_merged_04MAY_10sec.rds")
+saveRDS(df.sorted, "/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis scripts/analysis_output/all_ethoscopes_merged_13MAY_10sec.rds")

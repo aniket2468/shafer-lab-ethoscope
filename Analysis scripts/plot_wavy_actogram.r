@@ -18,14 +18,12 @@ OUTPUT_DIR <- "Analysis scripts/analysis_output/"
 #    Names must match the file prefix used in OUTPUT_DIR:
 #    e.g. "Eth007" → Sleep_Eth007_Focal.txt / Sleep_Eth007_Yoked.txt
 ETHOSCOPES <- c(
-  "Eth007", "Eth009", "Eth011", "Eth013",    # Male
-  "Eth008", "Eth010", "Eth012", "Eth014"     # Female
+  "Eth008", "Eth009", "Eth011"               # Male
 )
 
 # 1b. Sex assignment for each ethoscope (used for group labels & separator).
 SEX_GROUPS <- c(
-  Eth007 = "Male",   Eth009 = "Male",   Eth011 = "Male",   Eth013 = "Male",
-  Eth008 = "Female", Eth010 = "Female", Eth012 = "Female", Eth014 = "Female"
+  Eth008 = "Male", Eth009 = "Male", Eth011 = "Male"
 )
 
 # 2. Label shown on the LEFT side of the plot for each ethoscope group.
@@ -33,10 +31,8 @@ SEX_GROUPS <- c(
 #    Use \n for line breaks. Any ethoscope not listed here falls back
 #    to using its own ID as the label.
 ETH_LABELS <- c(
-  Eth007 = "Eth007\n(Male)",   Eth009 = "Eth009\n(Male)",
-  Eth011 = "Eth011\n(Male)",   Eth013 = "Eth013\n(Male)",
-  Eth008 = "Eth008\n(Female)", Eth010 = "Eth010\n(Female)",
-  Eth012 = "Eth012\n(Female)", Eth014 = "Eth014\n(Female)"
+  Eth008 = "Eth008\n(Male)", Eth009 = "Eth009\n(Male)",
+  Eth011 = "Eth011\n(Male)"
 )
 
 # 3. Yoking pairs.
@@ -57,14 +53,9 @@ PLOT_PAIRS <- "all"
 # 4b. Ethoscope-specific pairs to EXCLUDE.
 #     Named list: ethoscope ID → integer vector of pair numbers to drop.
 EXCLUDE_PAIRS <- list(
-  Eth007 = c(),
   Eth008 = c(),
   Eth009 = c(),
-  Eth010 = c(),
-  Eth011 = c(),
-  Eth012 = c(),
-  Eth013 = c(),
-  Eth014 = c()
+  Eth011 = c()
 )
 
 # 5. Line colours and legend text

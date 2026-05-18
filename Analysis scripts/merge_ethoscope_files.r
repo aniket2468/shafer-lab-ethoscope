@@ -7,15 +7,9 @@ folder <- "/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis s
 
 # List of files to merge (add or remove as needed)
 files <- c(
-  "ethoscope_007.txt",
   "ethoscope_008.txt",
   "ethoscope_009.txt",
-  "ethoscope_010.txt",
-  "ethoscope_011.txt",
-  "ethoscope_012.txt",
-  "ethoscope_013.txt",
-  "ethoscope_014.txt",
-  "ethoscope_015.txt"
+  "ethoscope_011.txt"
 )
 
 # ===================================================================
@@ -46,7 +40,7 @@ cat("================================\n")
 # SAVE MERGED FILE
 # ===================================================================
 
-output_file <- file.path(folder, "all_ethoscopes_merged_04MAY.txt")
+output_file <- file.path(folder, "all_ethoscopes_merged_13MAY.txt")
 
 write.table(
   all_data, 

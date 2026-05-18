@@ -4,7 +4,7 @@
 
 source("/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis scripts/02_newSleepDataEtho.r")
 
-RDS_FILE <- "/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis scripts/analysis_output/all_ethoscopes_merged_04MAY_10sec.rds"
+RDS_FILE <- "/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis scripts/analysis_output/all_ethoscopes_merged_13MAY_10sec.rds"
 OUTPUT_DIR <- "/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis scripts/analysis_output/"
 
 FOCAL_TUBES <- c(1, 3, 5, 7, 9)
