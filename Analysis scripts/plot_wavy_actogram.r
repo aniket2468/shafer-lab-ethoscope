@@ -14,32 +14,21 @@ library(ggplot2)
 setwd("/Users/aniketsharma/Documents/Research Assistant/Ethoscope/")
 OUTPUT_DIR <- "Analysis scripts/analysis_output/"
 
-# 1. Which ethoscopes to plot — Males first, then Females.
-#    Names must match the file prefix used in OUTPUT_DIR:
-#    e.g. "Eth007" → Sleep_Eth007_Focal.txt / Sleep_Eth007_Yoked.txt
 ETHOSCOPES <- c(
-  "Eth008", "Eth009", "Eth011"               # Male
+  "Eth007", "Eth009", "Eth011", "Eth013"        
 )
 
-# 1b. Sex assignment for each ethoscope (used for group labels & separator).
 SEX_GROUPS <- c(
-  Eth008 = "Male", Eth009 = "Male", Eth011 = "Male"
+  Eth007 = "Male", Eth009 = "Male", Eth011 = "Female", Eth013 = "Female"
 )
 
 # 2. Label shown on the LEFT side of the plot for each ethoscope group.
-#    Must be a named character vector using the same names as ETHOSCOPES.
-#    Use \n for line breaks. Any ethoscope not listed here falls back
-#    to using its own ID as the label.
 ETH_LABELS <- c(
-  Eth008 = "Eth008\n(Male)", Eth009 = "Eth009\n(Male)",
-  Eth011 = "Eth011\n(Male)"
+  Eth007 = "Eth007\n(Male)", Eth009 = "Eth009\n(Male)",
+  Eth011 = "Eth011\n(Female)", Eth013 = "Eth013\n(Female)"
 )
 
 # 3. Yoking pairs.
-#    focal_tube → red solid line  (focal / sleep-deprived)
-#    yoked_tube → dashed blue line (yoked / control)
-#    If an ethoscope does not have a particular tube (e.g. Eth012 only
-#    has tubes 1 & 12), that pair is automatically skipped for that device.
 PAIRS <- data.frame(
   pair       = c(1,  2,  3,  4,  5),
   focal_tube = c(1,  3,  5,  7,  9),   # RED   solid — focal
@@ -53,30 +42,34 @@ PLOT_PAIRS <- "all"
 # 4b. Ethoscope-specific pairs to EXCLUDE.
 #     Named list: ethoscope ID → integer vector of pair numbers to drop.
 EXCLUDE_PAIRS <- list(
-  Eth008 = c(),
+  Eth007 = c(),
   Eth009 = c(),
-  Eth011 = c()
+  Eth011 = c(),
+  Eth013 = c()
 )
 
-# 5. Line colours and legend text
+# Line colours and legend text
 FOCAL_COLOR <- "#E41A1C"            # red
 YOKED_COLOR <- "#377EB8"            # blue
 FOCAL_LABEL <- "Focal (Deprived)"
 YOKED_LABEL <- "Yoked (Control)"
 
-# 6. Skip first N 30-min bins at the start of the recording.
-#    Set to 0 to keep all data.
+# Skip first N 30-min bins at the start of the recording.
+# Set to 0 to keep all data.
 SKIP_ROWS <- 0
 
-# 6b. Maximum days to plot.
-#     Set to a number (e.g. 8) to fix the plot window, or NULL to auto-detect
-#     from the data (uses the 95th percentile of individual tube lengths).
+# Maximum days to plot.
+# Set to a number (e.g. 8) to fix the plot window, or NULL to auto-detect
+# from the data (uses the 95th percentile of individual tube lengths).
 MAX_DAYS <- 8
 
-# 7. Output PDF filename (saved inside OUTPUT_DIR)
-OUTPUT_FILE <- "Paired_Actogram_04MAY_Expt.pdf"
+# Output PDF filename (saved inside OUTPUT_DIR)
+OUTPUT_FILE <- "Paired_Actogram_26MAY_Expt.pdf"
 
-# 8. PDF height: fixed inches per actogram row (so few rows = short page, not tall rows)
+# Height scaling factor (e.g. 0.7 means sleep peak takes up 70% of the spacing between baseline rows, preventing overlap)
+WAVE_SCALE <- 0.7
+
+# PDF height: fixed inches per actogram row (so few rows = short page, not tall rows)
 ROW_HEIGHT_IN <- 0.6
 HEIGHT_EXTRA_IN <- 2   # title, legend, margins
 
@@ -163,26 +156,29 @@ dt[, row_num := row_num - SKIP_ROWS]
 # AUTO-DETECT DURATION FROM ALL LOADED FILES
 # ============================================================
 
+bin_hours <- 0.5   # 30-min bins
+bin_mins  <- bin_hours * 60
+
 individual_max_rows <- dt[, .(max_row = max(row_num)), by = .(ethoscope, tube, condition)]
 
 if (!is.null(MAX_DAYS)) {
-  max_row  <- MAX_DAYS * 24 / 0.5          # convert days → 30-min bin count
+  max_row  <- MAX_DAYS * 24 / bin_hours
   max_days <- MAX_DAYS
-  cat(sprintf("\nUsing fixed duration: %.1f h (%.2f days)\n", max_row * 0.5, max_days))
+  cat(sprintf("\nUsing fixed duration: %.1f h (%.2f days)\n", max_row * bin_hours, max_days))
 } else {
   # 95th percentile — robust to early deaths while not cutting the run short
   max_row  <- as.numeric(quantile(individual_max_rows$max_row, 0.95))
-  max_days <- (max_row - 1) * 0.5 / 24
-  cat(sprintf("\nAuto-detected recording duration: %.1f h (%.2f days)\n", max_row * 0.5, max_days))
+  max_days <- (max_row - 1) * bin_hours / 24
+  cat(sprintf("\nAuto-detected recording duration: %.1f h (%.2f days)\n", max_row * bin_hours, max_days))
 }
 
 # Filter to that duration
 dt <- dt[row_num <= max_row]
 
 # Compute time variables
-dt[, hours     := (row_num - 1) * 0.5]
+dt[, hours     := (row_num - 1) * bin_hours]
 dt[, days      := hours / 24]
-dt[, sleep_norm := sleep_min / 30]
+dt[, sleep_norm := sleep_min / bin_mins]
 
 # ============================================================
 # BUILD PLOT ROW ORDER
@@ -223,9 +219,10 @@ eth_label_dt[, label := ifelse(ethoscope %in% names(ETH_LABELS),
 
 sex_group_dt <- active_combos[, .(mid_y = mean(row_idx),
                                    max_y = max(row_idx)), by = sex]
+sex_group_dt <- sex_group_dt[!is.na(sex)]
 
 # Separator sits halfway between the last male row and the first female row
-sex_separator_y <- if ("Male" %in% sex_group_dt$sex && "Female" %in% sex_group_dt$sex) {
+sex_separator_y <- if (nrow(sex_group_dt) > 0 && "Male" %in% sex_group_dt$sex && "Female" %in% sex_group_dt$sex) {
   sex_group_dt[sex == "Male", max_y] + 0.5
 } else {
   NULL
@@ -237,12 +234,6 @@ sex_separator_y <- if ("Male" %in% sex_group_dt$sex && "Female" %in% sex_group_d
 
 x_max <- ceiling(max_days * 4) / 4   # round up to nearest 0.25 day
 
-x_break_interval <- dplyr::case_when(
-  max_days <= 1.5 ~ 0.25,
-  max_days <= 4   ~ 0.5,
-  TRUE            ~ 1.0
-)
-# Fallback without dplyr:
 x_break_interval <- if (max_days <= 1.5) 0.25 else if (max_days <= 4) 0.5 else 1.0
 x_breaks <- seq(0, x_max, by = x_break_interval)
 
@@ -266,20 +257,24 @@ eth_annotations <- lapply(seq_len(nrow(eth_label_dt)), function(i) {
 })
 
 # Sex group label annotations
-sex_annotations <- lapply(seq_len(nrow(sex_group_dt)), function(i) {
-  annotate("text",
-           x        = sex_label_x,
-           y        = sex_group_dt$mid_y[i],
-           label    = sex_group_dt$sex[i],
-           fontface = "bold.italic",
-           size     = 5,
-           hjust    = 1,
-           color    = "gray20")
-})
+sex_annotations <- if (nrow(sex_group_dt) > 0) {
+  lapply(seq_len(nrow(sex_group_dt)), function(i) {
+    annotate("text",
+             x        = sex_label_x,
+             y        = sex_group_dt$mid_y[i],
+             label    = sex_group_dt$sex[i],
+             fontface = "bold.italic",
+             size     = 5,
+             hjust    = 1,
+             color    = "gray20")
+  })
+} else {
+  list()
+}
 
 p <- ggplot(dt, aes(
     x     = days,
-    y     = y_pos + sleep_norm * 0.8,
+    y     = y_pos + sleep_norm * WAVE_SCALE,
     group = interaction(row_label, condition)
   )) +
 

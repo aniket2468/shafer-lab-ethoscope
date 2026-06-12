@@ -1,20 +1,13 @@
-# ===================================================================
-# Merge All Ethoscope Processed Files
-# ===================================================================
 
-# Set folder path where your processed .txt files are located
 folder <- "/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis scripts/analysis_output"
 
 # List of files to merge (add or remove as needed)
 files <- c(
-  "ethoscope_008.txt",
+  "ethoscope_007.txt",
   "ethoscope_009.txt",
-  "ethoscope_011.txt"
+  "ethoscope_011.txt",
+  "ethoscope_013.txt"
 )
-
-# ===================================================================
-# MERGE ALL FILES
-# ===================================================================
 
 cat("Merging ethoscope files...\n\n")
 
@@ -36,11 +29,7 @@ cat("\n================================\n")
 cat("Total rows:", nrow(all_data), "\n")
 cat("================================\n")
 
-# ===================================================================
-# SAVE MERGED FILE
-# ===================================================================
-
-output_file <- file.path(folder, "all_ethoscopes_merged_13MAY.txt")
+output_file <- file.path(folder, "all_ethoscopes_merged_26MAY.txt")
 
 write.table(
   all_data, 
