@@ -1,15 +1,5 @@
-# ============================================================
-# PAIRED SLEEP ACTOGRAM — FOCAL vs YOKED
-# ============================================================
-# Edit only the USER CONFIG section below, then run the whole script.
-# ============================================================
-
 library(data.table)
 library(ggplot2)
-
-# ============================================================
-# USER CONFIG — Edit these values before every run
-# ============================================================
 
 setwd("/Users/aniketsharma/Documents/Research Assistant/Ethoscope/")
 OUTPUT_DIR <- "Analysis scripts/analysis_output/"

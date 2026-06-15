@@ -1,14 +1,10 @@
-# ============================================
-# CREATE AVERAGE SLEEP FILES (EXCLUDING BAD PAIRS)
-# ============================================
-
 library(data.table)
 
 INPUT_DIR <- "/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis scripts/analysis_output/"
 OUTPUT_DIR <- "/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis scripts/analysis_output/"
 
 # Pair mapping: pair 1 = T1/T12, pair 2 = T3/T14, pair 3 = T5/T16, pair 4 = T7/T18, pair 5 = T9/T20
-FOCAL_COLS <- c("T1", "T3", "T5", "T7", "T9")    # pairs 1,2,3,4,5
+FOCAL_COLS <- c("T1", "T3", "T5", "T7", "T9")
 YOKED_COLS <- c("T12", "T14", "T16", "T18", "T20")
 
 # Exclusions by ethoscope and pair number
