@@ -1,7 +1,7 @@
 # DAILY SLEEP PER FLY (minutes) - WITH PAIR EXCLUSIONS
 
 library(data.table)
-setwd("/Users/aniketsharma/Documents/Research Assistant/Ethoscope/")
+setwd("/Users/aniketsharma/Documents/Ethoscope/Ethoscope/")
 
 # ============================================================
 # CONFIG — mirrors plot_wavy_actogram.r exactly
@@ -11,32 +11,20 @@ setwd("/Users/aniketsharma/Documents/Research Assistant/Ethoscope/")
 FOCAL_BY_PAIR <- c("T1", "T3", "T5", "T7", "T9")
 YOKED_BY_PAIR <- c("T12", "T14", "T16", "T18", "T20")
 
-# Males first, then Females — matches actogram order; Eth013 excluded
 ETHOSCOPES <- c(
-  "Eth008", "Eth009", "Eth011", "Eth014", "Eth015",   # Male
-  "Eth007", "Eth010", "Eth012"                        # Female
+  "Eth007"
 )
 
 SEX_GROUPS <- c(
-  Eth008 = "Male",   Eth009 = "Male",   Eth011 = "Male",
-  Eth014 = "Male",   Eth015 = "Male",
-  Eth007 = "Female", Eth010 = "Female", Eth012 = "Female"
+  Eth007 = "Male"
 )
 
 # Ethoscope-specific pairs to exclude (same as actogram)
 EXCLUDE <- list(
-  Eth007 = c(3, 4, 5),
-  Eth008 = c(2, 5),
-  Eth009 = c(3, 5),
-  Eth010 = c(1, 2, 5),
-  Eth011 = c(3),
-  Eth012 = c(1, 3),
-  Eth013 = c(1, 2, 3, 4, 5),
-  Eth014 = c(1, 2, 5),
-  Eth015 = c(1)
+  Eth007 = c()
 )
 
-SKIP_ROWS <- 34   # skip first 17 h of recording
+SKIP_ROWS <- 0
 
 # Storage for all days
 all_results <- list()
@@ -134,6 +122,4 @@ print_summary <- function(data, label) {
       "| Yoked =", nrow(data[type == "Yoked"]), "\n")
 }
 
-print_summary(results,                        "ALL ETHOSCOPES SUMMARY")
-print_summary(results[sex == "Male"],         "MALE ETHOSCOPES SUMMARY")
-print_summary(results[sex == "Female"],       "FEMALE ETHOSCOPES SUMMARY")
+print_summary(results, "SUMMARY")

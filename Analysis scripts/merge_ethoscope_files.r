@@ -1,5 +1,5 @@
 
-folder <- "/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis scripts/analysis_output"
+folder <- "/Users/aniketsharma/Documents/Ethoscope/Ethoscope/Analysis scripts/analysis_output"
 
 # List of files to merge (add or remove as needed)
 files <- c(

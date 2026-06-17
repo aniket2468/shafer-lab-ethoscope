@@ -1,6 +1,8 @@
 rm(list=ls())
 
-df <- read.delim("/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis scripts/analysis_output/all_ethoscopes_merged_26MAY.txt", header = T)
+base_dir <- "/Users/aniketsharma/Documents/Ethoscope/Ethoscope/"
+
+df <- read.delim(paste0(base_dir, "Analysis scripts/analysis_output/all_ethoscopes_merged.txt"), header = T)
 
 datSortBin <- function (input, n.days, cat.names = c("Control", "Experimental"), ethoscope.id, mins.trim) {
   library(stringr)
@@ -64,6 +66,44 @@ datSortBin <- function (input, n.days, cat.names = c("Control", "Experimental"),
   
 }
 
-df.sorted <- datSortBin(input = df, n.days = 6, cat.names = c("Eth007", "Eth009", "Eth011", "Eth013"), ethoscope.id = c("007de0", "009296", "011f30", "013b9b"), mins.trim = c(0, 0, 0, 0))
+# Auto-detect ethoscopes from results folder
+results_dirs <- list.dirs(paste0(base_dir, "ethoscope_data/results/"), recursive = FALSE)
+machine_id_folders <- basename(results_dirs)
 
-saveRDS(df.sorted, "/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis scripts/analysis_output/all_ethoscopes_merged_26MAY_10sec.rds")
+cat_names <- c()
+eth_ids   <- c()
+
+for (mid in machine_id_folders) {
+  eth_folder <- list.dirs(file.path(base_dir, "ethoscope_data/results", mid), recursive = FALSE)
+  eth_folder <- basename(eth_folder[grepl("^ETHOSCOPE_", basename(eth_folder))])
+  if (length(eth_folder) == 0) next
+  
+  eth_num <- sub("ETHOSCOPE_0*", "", eth_folder[1])
+  eth_id  <- substr(mid, 1, 6)
+  
+  # Check this ethoscope has data in the merged file
+  if (any(grepl(eth_id, df$id))) {
+    cat_names <- c(cat_names, paste0("Eth", sprintf("%03d", as.integer(eth_num))))
+    eth_ids   <- c(eth_ids, eth_id)
+  }
+}
+
+# Sort by ethoscope number
+ord <- order(cat_names)
+cat_names <- cat_names[ord]
+eth_ids   <- eth_ids[ord]
+
+cat("Detected ethoscopes:\n")
+for (k in seq_along(cat_names)) {
+  cat(sprintf("  %s -> id: %s\n", cat_names[k], eth_ids[k]))
+}
+
+df.sorted <- datSortBin(input = df, n.days = 6,
+                        cat.names = cat_names,
+                        ethoscope.id = eth_ids,
+                        mins.trim = rep(0, length(eth_ids)))
+
+out_rds <- paste0(base_dir, "Analysis scripts/analysis_output/",
+                  format(Sys.Date(), "%d_%b"), "_all_ethoscopes_10sec.rds")
+saveRDS(df.sorted, out_rds)
+cat(sprintf("\n✓ Saved: %s\n", out_rds))
