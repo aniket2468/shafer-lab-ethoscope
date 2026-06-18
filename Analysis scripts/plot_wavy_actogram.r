@@ -4,17 +4,18 @@ library(ggplot2)
 setwd("/Users/aniketsharma/Documents/Ethoscope/Ethoscope/")
 OUTPUT_DIR <- "Analysis scripts/analysis_output/"
 
-ETHOSCOPES <- c(
-  "Eth007"    
-)
+detect_ethoscopes <- function(output_dir) {
+  focal_files <- list.files(output_dir, pattern = "^Sleep_(Eth\\d+)_Focal\\.txt$")
+  if (length(focal_files) == 0) {
+    stop("No Sleep_*_Focal.txt files in ", output_dir,
+         ". Run 03_CreateSleepDataFilesFromRawEthoscopeOutput.r first.")
+  }
+  eth <- sub("^Sleep_(Eth\\d+)_Focal\\.txt$", "\\1", focal_files)
+  eth[order(as.integer(sub("Eth", "", eth)))]
+}
 
-SEX_GROUPS <- c(
-  Eth007 = "Male"
-)
-
-ETH_LABELS <- c(
-  Eth007 = "Eth007\n(Male)"
-)
+ETHOSCOPES <- detect_ethoscopes(OUTPUT_DIR)
+cat("Detected ethoscopes:", paste(ETHOSCOPES, collapse = ", "), "\n\n")
 
 # 3. Yoking pairs.
 PAIRS <- data.frame(
@@ -43,7 +44,7 @@ SKIP_ROWS <- 0
 
 MAX_DAYS <- 6
 
-OUTPUT_FILE <- "Paired_Actogram_16JUN_Expt_cropped.pdf"
+OUTPUT_FILE <- paste0("Paired_Actogram_", format(Sys.Date(), "%d_%b"), ".pdf")
 
 # Height scaling factor (e.g. 0.7 means sleep peak takes up 70% of the spacing between baseline rows, preventing overlap)
 WAVE_SCALE <- 0.7
@@ -168,7 +169,6 @@ active_combos[, eth_order := match(ethoscope, ETHOSCOPES)]
 setorder(active_combos, eth_order, pair)
 active_combos[, eth_order := NULL]
 active_combos[, row_label := paste0(ethoscope, " Pair ", pair)]
-active_combos[, sex := SEX_GROUPS[ethoscope]]
 active_combos[, row_idx := seq_len(.N)]
 
 row_order <- active_combos$row_label
@@ -188,24 +188,7 @@ eth_label_dt[, mid_y := sapply(ethoscope, function(e) {
   rows_for_eth <- which(active_combos$ethoscope == e)
   mean(rows_for_eth)
 })]
-eth_label_dt[, label := ifelse(ethoscope %in% names(ETH_LABELS),
-                                ETH_LABELS[ethoscope],
-                                ethoscope)]
-
-# ============================================================
-# SEX GROUP LABELS & SEPARATOR
-# ============================================================
-
-sex_group_dt <- active_combos[, .(mid_y = mean(row_idx),
-                                   max_y = max(row_idx)), by = sex]
-sex_group_dt <- sex_group_dt[!is.na(sex)]
-
-# Separator sits halfway between the last male row and the first female row
-sex_separator_y <- if (nrow(sex_group_dt) > 0 && "Male" %in% sex_group_dt$sex && "Female" %in% sex_group_dt$sex) {
-  sex_group_dt[sex == "Male", max_y] + 0.5
-} else {
-  NULL
-}
+eth_label_dt[, label := ethoscope]
 
 # ============================================================
 # X-AXIS BREAKS — scaled to actual duration
@@ -216,9 +199,8 @@ x_max <- ceiling(max_days * 4) / 4   # round up to nearest 0.25 day
 x_break_interval <- if (max_days <= 1.5) 0.25 else if (max_days <= 4) 0.5 else 1.0
 x_breaks <- seq(0, x_max, by = x_break_interval)
 
-# Left-margin x positions for labels
-label_x     <- -x_max * 0.15   # ethoscope labels
-sex_label_x <- -x_max * 0.30   # sex group labels (further left)
+# Left-margin x position for ethoscope labels
+label_x <- -x_max * 0.15
 
 # ============================================================
 # BUILD PLOT
@@ -235,22 +217,6 @@ eth_annotations <- lapply(seq_len(nrow(eth_label_dt)), function(i) {
            hjust    = 1)
 })
 
-# Sex group label annotations
-sex_annotations <- if (nrow(sex_group_dt) > 0) {
-  lapply(seq_len(nrow(sex_group_dt)), function(i) {
-    annotate("text",
-             x        = sex_label_x,
-             y        = sex_group_dt$mid_y[i],
-             label    = sex_group_dt$sex[i],
-             fontface = "bold.italic",
-             size     = 5,
-             hjust    = 1,
-             color    = "gray20")
-  })
-} else {
-  list()
-}
-
 p <- ggplot(dt, aes(
     x     = days,
     y     = y_pos + sleep_norm * WAVE_SCALE,
@@ -261,8 +227,6 @@ p <- ggplot(dt, aes(
   geom_hline(yintercept = seq_len(n_rows), color = "gray85", linewidth = 0.3) +
 
   eth_annotations +
-  sex_annotations +
-
 
   scale_linetype_manual(
     values = c("Focal" = "solid",   "Yoked" = "dashed"),

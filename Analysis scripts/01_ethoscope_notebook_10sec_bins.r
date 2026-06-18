@@ -103,7 +103,8 @@ df.sorted <- datSortBin(input = df, n.days = 6,
                         ethoscope.id = eth_ids,
                         mins.trim = rep(0, length(eth_ids)))
 
-out_rds <- paste0(base_dir, "Analysis scripts/analysis_output/",
-                  format(Sys.Date(), "%d_%b"), "_all_ethoscopes_10sec.rds")
+output_dir <- paste0(base_dir, "Analysis scripts/analysis_output/")
+out_rds    <- paste0(output_dir, format(Sys.Date(), "%d_%b"), "_all_ethoscopes_10sec.rds")
+
 saveRDS(df.sorted, out_rds)
 cat(sprintf("\n✓ Saved: %s\n", out_rds))

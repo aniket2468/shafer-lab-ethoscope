@@ -4,8 +4,19 @@
 
 source("/Users/aniketsharma/Documents/Ethoscope/Ethoscope/Analysis scripts/02_newSleepDataEtho.r")
 
-RDS_FILE <- "/Users/aniketsharma/Documents/Ethoscope/Ethoscope/Analysis scripts/analysis_output/16_JUN_ethoscope_007_10sec.rds"
 OUTPUT_DIR <- "/Users/aniketsharma/Documents/Ethoscope/Ethoscope/Analysis scripts/analysis_output/"
+
+resolve_latest_rds <- function(output_dir) {
+  rds_files <- list.files(output_dir, pattern = "_all_ethoscopes_10sec\\.rds$", full.names = TRUE)
+  if (length(rds_files) == 0) {
+    stop("No 10sec RDS found in ", output_dir,
+         ". Run 01_ethoscope_notebook_10sec_bins.r first.")
+  }
+  rds_files[which.max(file.info(rds_files)$mtime)]
+}
+
+RDS_FILE <- resolve_latest_rds(OUTPUT_DIR)
+cat("Using RDS:", RDS_FILE, "\n\n")
 
 FOCAL_TUBES <- c(1, 3, 5, 7, 9)
 YOKED_TUBES <- c(12, 14, 16, 18, 20)

@@ -5,6 +5,8 @@ library(RSQLite)
 
 setwd("/Users/aniketsharma/Documents/Ethoscope/Ethoscope/")
 
+do_crop <- TRUE  # TRUE: trim to 24h before SD start; FALSE: keep full recording
+
 output_dir <- "Analysis scripts/analysis_output/"
 
 all_dbs <- Sys.glob("ethoscope_data/results/*/ETHOSCOPE_*/*/*.db")
@@ -96,23 +98,27 @@ for (i in 1:nrow(db_info)) {
     next
   }
 
-  # Trim: keep only data from 24h before SD start
-  con <- dbConnect(SQLite(), db_path)
-  selected_opts <- dbGetQuery(con, "SELECT value FROM METADATA WHERE field='selected_options'")$value[1]
-  exp_start_unix <- as.numeric(dbGetQuery(con, "SELECT value FROM METADATA WHERE field='date_time'")$value[1])
-  dbDisconnect(con)
+  if (do_crop) {
+    # Trim: keep only data from 24h before SD start
+    con <- dbConnect(SQLite(), db_path)
+    selected_opts <- dbGetQuery(con, "SELECT value FROM METADATA WHERE field='selected_options'")$value[1]
+    exp_start_unix <- as.numeric(dbGetQuery(con, "SELECT value FROM METADATA WHERE field='date_time'")$value[1])
+    dbDisconnect(con)
 
-  date_range_part <- sub(".*date_range", "", selected_opts)
-  sd_start_str <- regmatches(date_range_part, regexpr("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}", date_range_part))
+    date_range_part <- sub(".*date_range", "", selected_opts)
+    sd_start_str <- regmatches(date_range_part, regexpr("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}", date_range_part))
 
-  if (length(sd_start_str) > 0) {
-    sd_start_unix <- as.numeric(as.POSIXct(sd_start_str, format = "%Y-%m-%d %H:%M:%S"))
-    cutoff_t <- (sd_start_unix - (24 * 3600)) - exp_start_unix
-    nrow_before <- nrow(dt)
-    dt <- dt[t >= cutoff_t]
-    cat(sprintf("  ✓ Trimmed: SD start %s | Rows: %d → %d\n", sd_start_str, nrow_before, nrow(dt)))
+    if (length(sd_start_str) > 0) {
+      sd_start_unix <- as.numeric(as.POSIXct(sd_start_str, format = "%Y-%m-%d %H:%M:%S"))
+      cutoff_t <- (sd_start_unix - (24 * 3600)) - exp_start_unix
+      nrow_before <- nrow(dt)
+      dt <- dt[t >= cutoff_t]
+      cat(sprintf("  ✓ Trimmed: SD start %s | Rows: %d → %d\n", sd_start_str, nrow_before, nrow(dt)))
+    } else {
+      cat("  ⚠ No date_range in metadata. No trim applied.\n")
+    }
   } else {
-    cat("  ⚠ No date_range in metadata. No trim applied.\n")
+    cat("  ✓ Cropping disabled — keeping full recording.\n")
   }
 
   # Save individual file
