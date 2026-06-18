@@ -1,31 +1,19 @@
-# ============================================================
-# PAIRED SLEEP ACTOGRAM — FOCAL vs YOKED
-# ============================================================
-# Edit only the USER CONFIG section below, then run the whole script.
-# ============================================================
-
 library(data.table)
 library(ggplot2)
 
-# ============================================================
-# USER CONFIG — Edit these values before every run
-# ============================================================
-
-setwd("/Users/aniketsharma/Documents/Research Assistant/Ethoscope/")
+setwd("/Users/aniketsharma/Documents/Ethoscope/Ethoscope/")
 OUTPUT_DIR <- "Analysis scripts/analysis_output/"
 
 ETHOSCOPES <- c(
-  "Eth007", "Eth009", "Eth011", "Eth013"        
+  "Eth011"    
 )
 
 SEX_GROUPS <- c(
-  Eth007 = "Male", Eth009 = "Male", Eth011 = "Female", Eth013 = "Female"
+  Eth007 = "Male"
 )
 
-# 2. Label shown on the LEFT side of the plot for each ethoscope group.
 ETH_LABELS <- c(
-  Eth007 = "Eth007\n(Male)", Eth009 = "Eth009\n(Male)",
-  Eth011 = "Eth011\n(Female)", Eth013 = "Eth013\n(Female)"
+  Eth007 = "Eth007\n(Male)"
 )
 
 # 3. Yoking pairs.
@@ -42,10 +30,7 @@ PLOT_PAIRS <- "all"
 # 4b. Ethoscope-specific pairs to EXCLUDE.
 #     Named list: ethoscope ID → integer vector of pair numbers to drop.
 EXCLUDE_PAIRS <- list(
-  Eth007 = c(),
-  Eth009 = c(),
-  Eth011 = c(),
-  Eth013 = c()
+  Eth007 = c()
 )
 
 # Line colours and legend text
@@ -54,17 +39,11 @@ YOKED_COLOR <- "#377EB8"            # blue
 FOCAL_LABEL <- "Focal (Deprived)"
 YOKED_LABEL <- "Yoked (Control)"
 
-# Skip first N 30-min bins at the start of the recording.
-# Set to 0 to keep all data.
 SKIP_ROWS <- 0
 
-# Maximum days to plot.
-# Set to a number (e.g. 8) to fix the plot window, or NULL to auto-detect
-# from the data (uses the 95th percentile of individual tube lengths).
-MAX_DAYS <- 8
+MAX_DAYS <- 6
 
-# Output PDF filename (saved inside OUTPUT_DIR)
-OUTPUT_FILE <- "Paired_Actogram_26MAY_Expt.pdf"
+OUTPUT_FILE <- "Paired_Actogram_18JUN_Expt.pdf"
 
 # Height scaling factor (e.g. 0.7 means sleep peak takes up 70% of the spacing between baseline rows, preventing overlap)
 WAVE_SCALE <- 0.7

@@ -1,57 +1,52 @@
 library(scopr)
 library(data.table)
 library(sleepr)
+library(RSQLite)
 
-setwd("/Users/aniketsharma/Documents/Research Assistant/Ethoscope/")
+setwd("/Users/aniketsharma/Documents/Ethoscope/Ethoscope/")
 
-output_file <- "Analysis scripts/analysis_output/ethoscope_013.txt"
+output_file <- "Analysis scripts/analysis_output/ethoscope_011.txt"
 
 metadata <- data.table(
-  machine_name = "ETHOSCOPE_013",
-  date = "2026-05-19",
+  machine_name = "ETHOSCOPE_011",
+  date = "2026-06-17",
   region_id = 1:20
 )
 
-print("Metadata created:")
-print(metadata)
+metadata <- link_ethoscope_metadata(metadata, result_dir = "ethoscope_data/results/")
 
-print("Linking metadata to database files...")
+db_path <- metadata$file_info[[1]]$path
 
-metadata <- link_ethoscope_metadata(
-  metadata, 
-  result_dir = "ethoscope_data/results/"
-)
+# Fix is_inferred TEXT→INTEGER and detect available ROIs
+con <- dbConnect(SQLite(), db_path)
+roi_tables <- grep("^ROI_\\d+$", dbListTables(con), value = TRUE)
 
-print("Metadata linked successfully!")
-print(metadata)
+for (tbl in roi_tables) {
+  col_info <- dbGetQuery(con, paste0("PRAGMA table_info(", tbl, ")"))
+  if ("is_inferred" %in% col_info$name && col_info$type[col_info$name == "is_inferred"] == "TEXT") {
+    col_defs <- sapply(1:nrow(col_info), function(j) {
+      ctype <- ifelse(col_info$name[j] == "is_inferred", "INTEGER", col_info$type[j])
+      pk    <- ifelse(col_info$pk[j] == 1, " PRIMARY KEY", "")
+      paste0(col_info$name[j], " ", ctype, pk)
+    })
+    new_tbl <- paste0(tbl, "_fix")
+    dbExecute(con, paste0("CREATE TABLE ", new_tbl, " (", paste(col_defs, collapse = ", "), ")"))
+    dbExecute(con, paste0("INSERT INTO ", new_tbl, " SELECT * FROM ", tbl))
+    dbExecute(con, paste0("DROP TABLE ", tbl))
+    dbExecute(con, paste0("ALTER TABLE ", new_tbl, " RENAME TO ", tbl))
+  }
+}
 
-print("Loading data and applying sleep annotation...")
-print("This may take several minutes...")
+available_rois <- sort(as.integer(sub("ROI_", "", roi_tables)))
+dbDisconnect(con)
 
-dt <- load_ethoscope(
-  metadata,
-  FUN = sleepr::sleep_annotation,
-  verbose = TRUE
-)
+metadata <- metadata[region_id %in% available_rois]
+print(paste("ROIs with data:", paste(available_rois, collapse = ", ")))
 
-print("✓ Data loaded successfully!")
-print("Summary:")
-print(dt)
+dt <- load_ethoscope(metadata, FUN = sleepr::sleep_annotation, verbose = TRUE)
 
-print("\nColumn names:")
-print(names(dt))
+print(paste("Rows:", nrow(dt), "| Individuals:", length(unique(dt$id))))
+print(head(dt, 5))
 
-print("\nFirst few rows:")
-print(head(dt, 20))
-
-write.table(
-  dt, 
-  file = output_file,
-  sep = "\t",
-  row.names = FALSE,
-  quote = FALSE
-)
-
-print(paste("\n✓ Data exported to:", output_file))
-print(paste("✓ Total rows:", nrow(dt)))
-print(paste("✓ Unique individuals:", length(unique(dt$id))))
+write.table(dt, file = output_file, sep = "\t", row.names = FALSE, quote = FALSE)
+print(paste("✓ Exported to:", output_file))

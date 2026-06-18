@@ -2,10 +2,10 @@
 # CREATE SLEEP DATA FILES - PER ETHOSCOPE
 # ============================================
 
-source("/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis scripts/02_newSleepDataEtho.r")
+source("/Users/aniketsharma/Documents/Ethoscope/Ethoscope/Analysis scripts/02_newSleepDataEtho.r")
 
-RDS_FILE <- "/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis scripts/analysis_output/all_ethoscopes_merged_26MAY_10sec.rds"
-OUTPUT_DIR <- "/Users/aniketsharma/Documents/Research Assistant/Ethoscope/Analysis scripts/analysis_output/"
+RDS_FILE <- "/Users/aniketsharma/Documents/Ethoscope/Ethoscope/Analysis scripts/analysis_output/ethoscope_11_18JUN_10sec.rds"
+OUTPUT_DIR <- "/Users/aniketsharma/Documents/Ethoscope/Ethoscope/Analysis scripts/analysis_output/"
 
 FOCAL_TUBES <- c(1, 3, 5, 7, 9)
 YOKED_TUBES <- c(12, 14, 16, 18, 20)
