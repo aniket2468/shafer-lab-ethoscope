@@ -4,8 +4,7 @@ library(sleepr)
 library(RSQLite)
 
 setwd("/Users/aniketsharma/Documents/Ethoscope/Ethoscope/")
-
-do_crop <- TRUE  # TRUE: trim to 24h before SD start; FALSE: keep full recording
+source("Analysis scripts/analysis_config.r")
 
 output_dir <- "Analysis scripts/analysis_output/"
 

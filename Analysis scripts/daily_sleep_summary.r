@@ -1,7 +1,12 @@
 library(data.table)
 
 setwd("/Users/aniketsharma/Documents/Ethoscope/Ethoscope/")
+source("Analysis scripts/analysis_config.r")
 OUTPUT_DIR <- "Analysis scripts/analysis_output/"
+
+SLEEP_BIN_MIN <- read_applied_bin(OUTPUT_DIR)
+BINS_PER_DAY  <- (24 * 60) / SLEEP_BIN_MIN
+cat("Sleep bin size:", SLEEP_BIN_MIN, "min (", BINS_PER_DAY, " bins/day)\n\n", sep = "")
 
 FOCAL_BY_PAIR <- c("T1", "T3", "T5", "T7", "T9")
 YOKED_BY_PAIR <- c("T12", "T14", "T16", "T18", "T20")
@@ -17,8 +22,8 @@ detect_ethoscopes <- function(output_dir) {
 }
 
 get_day_sleep <- function(vals, day) {
-  start <- (day - 1) * 48 + 1
-  end   <- day * 48
+  start <- (day - 1) * BINS_PER_DAY + 1
+  end   <- day * BINS_PER_DAY
   if (start > length(vals)) return(NA_real_)
   end <- min(end, length(vals))
   round(sum(vals[start:end], na.rm = TRUE), 1)
@@ -69,11 +74,12 @@ summary_rows <- lapply(periods, function(period) {
 })
 summary <- rbindlist(summary_rows)
 
-out_file <- file.path(OUTPUT_DIR, paste0("daily_sleep_summary_", format(Sys.Date(), "%d_%b"), ".txt"))
+out_file <- file.path(OUTPUT_DIR, paste0("daily_sleep_summary_", format(Sys.Date(), "%d_%b"), "_", SLEEP_BIN_MIN, "min.txt"))
 
 con <- file(out_file, open = "wt")
 writeLines(sprintf("Daily Sleep Summary — %s", format(Sys.Date(), "%d %b %Y")), con)
 writeLines(sprintf("Ethoscopes: %s", paste(ETHOSCOPES, collapse = ", ")), con)
+writeLines(sprintf("Sleep bin size: %d min", SLEEP_BIN_MIN), con)
 writeLines(sprintf("Pairs included: Focal = %d | Yoked = %d",
                    nrow(results[type == "Focal"]), nrow(results[type == "Yoked"])), con)
 writeLines("", con)

@@ -3,6 +3,7 @@
 # ============================================
 
 source("/Users/aniketsharma/Documents/Ethoscope/Ethoscope/Analysis scripts/02_newSleepDataEtho.r")
+source("/Users/aniketsharma/Documents/Ethoscope/Ethoscope/Analysis scripts/analysis_config.r")
 
 OUTPUT_DIR <- "/Users/aniketsharma/Documents/Ethoscope/Ethoscope/Analysis scripts/analysis_output/"
 
@@ -16,7 +17,8 @@ resolve_latest_rds <- function(output_dir) {
 }
 
 RDS_FILE <- resolve_latest_rds(OUTPUT_DIR)
-cat("Using RDS:", RDS_FILE, "\n\n")
+cat("Using RDS:", RDS_FILE, "\n")
+cat("Sleep bin size:", SLEEP_BIN_MIN, "min\n\n")
 
 FOCAL_TUBES <- c(1, 3, 5, 7, 9)
 YOKED_TUBES <- c(12, 14, 16, 18, 20)
@@ -71,7 +73,7 @@ for (eth_name in ethoscope_names) {
   } else {
     focal.df <- as.data.frame(do.call(cbind, focal_list))
     colnames(focal.df) <- focal_names
-    focal.sleep <- newSleepDataEtho(data = focal.df, sleep.def = 5, bin = 30, t.cycle = 24)
+    focal.sleep <- newSleepDataEtho(data = focal.df, sleep.def = 5, bin = SLEEP_BIN_MIN, t.cycle = 24)
     colnames(focal.sleep) <- c("ZT", focal_names[2:(n_focal + 1)])
     write.table(focal.sleep, paste0(OUTPUT_DIR, "Sleep_", eth_name, "_Focal.txt"), 
                 quote = FALSE, row.names = FALSE, sep = "\t")
@@ -83,7 +85,7 @@ for (eth_name in ethoscope_names) {
   } else {
     yoked.df <- as.data.frame(do.call(cbind, yoked_list))
     colnames(yoked.df) <- yoked_names
-    yoked.sleep <- newSleepDataEtho(data = yoked.df, sleep.def = 5, bin = 30, t.cycle = 24)
+    yoked.sleep <- newSleepDataEtho(data = yoked.df, sleep.def = 5, bin = SLEEP_BIN_MIN, t.cycle = 24)
     colnames(yoked.sleep) <- c("ZT", yoked_names[2:(n_yoked + 1)])
     write.table(yoked.sleep, paste0(OUTPUT_DIR, "Sleep_", eth_name, "_Yoked.txt"), 
                 quote = FALSE, row.names = FALSE, sep = "\t")
@@ -93,4 +95,5 @@ for (eth_name in ethoscope_names) {
   cat("\n")
 }
 
-cat("Done! Files ready for plotting.\n")
+writeLines(as.character(SLEEP_BIN_MIN), file.path(OUTPUT_DIR, ".sleep_bin_min"))
+cat("Done! Files ready for plotting (", SLEEP_BIN_MIN, " min bins).\n", sep = "")

@@ -2,7 +2,13 @@ library(data.table)
 library(ggplot2)
 
 setwd("/Users/aniketsharma/Documents/Ethoscope/Ethoscope/")
+source("Analysis scripts/analysis_config.r")
 OUTPUT_DIR <- "Analysis scripts/analysis_output/"
+
+SLEEP_BIN_MIN <- read_applied_bin(OUTPUT_DIR)
+BIN_HOURS     <- SLEEP_BIN_MIN / 60
+BINS_PER_DAY  <- (24 * 60) / SLEEP_BIN_MIN
+cat("Sleep bin size:", SLEEP_BIN_MIN, "min\n\n")
 
 detect_ethoscopes <- function(output_dir) {
   focal_files <- list.files(output_dir, pattern = "^Sleep_(Eth\\d+)_Focal\\.txt$")
@@ -44,7 +50,7 @@ SKIP_ROWS <- 0
 
 MAX_DAYS <- 6
 
-OUTPUT_FILE <- paste0("Paired_Actogram_", format(Sys.Date(), "%d_%b"), ".pdf")
+OUTPUT_FILE <- paste0("Paired_Actogram_", format(Sys.Date(), "%d_%b"), "_", SLEEP_BIN_MIN, "min.pdf")
 
 # Height scaling factor (e.g. 0.7 means sleep peak takes up 70% of the spacing between baseline rows, preventing overlap)
 WAVE_SCALE <- 0.7
@@ -52,6 +58,7 @@ WAVE_SCALE <- 0.7
 # PDF height: fixed inches per actogram row (so few rows = short page, not tall rows)
 ROW_HEIGHT_IN <- 0.6
 HEIGHT_EXTRA_IN <- 2   # title, legend, margins
+PLOT_WIDTH_IN   <- if (SLEEP_BIN_MIN == 5) 48 else 16
 
 # ============================================================
 # LOAD DATA — No edits needed below this line
@@ -136,8 +143,8 @@ dt[, row_num := row_num - SKIP_ROWS]
 # AUTO-DETECT DURATION FROM ALL LOADED FILES
 # ============================================================
 
-bin_hours <- 0.5   # 30-min bins
-bin_mins  <- bin_hours * 60
+bin_hours <- BIN_HOURS
+bin_mins  <- SLEEP_BIN_MIN
 
 individual_max_rows <- dt[, .(max_row = max(row_num)), by = .(ethoscope, tube, condition)]
 
@@ -251,8 +258,8 @@ p <- ggplot(dt, aes(
   labs(
     title    = "Sleep Actogram: Focal vs Yoked Pairs",
     subtitle = sprintf(
-      "Solid = %s  |  Dashed = %s  |  Upward = Sleeping  |  Duration: %.1f h",
-      FOCAL_LABEL, YOKED_LABEL, max_row * 0.5
+      "Solid = %s  |  Dashed = %s  |  Upward = Sleeping  |  %d-min bins  |  Duration: %.1f h",
+      FOCAL_LABEL, YOKED_LABEL, SLEEP_BIN_MIN, max_row * bin_hours
     ),
     x = "Days",
     y = NULL
@@ -279,6 +286,7 @@ p <- ggplot(dt, aes(
 
 plot_height <- n_rows * ROW_HEIGHT_IN + HEIGHT_EXTRA_IN
 out_path    <- paste0(OUTPUT_DIR, OUTPUT_FILE)
-ggsave(out_path, p, width = 16, height = plot_height, limitsize = FALSE)
+ggsave(out_path, p, width = PLOT_WIDTH_IN, height = plot_height, limitsize = FALSE)
 
-cat(sprintf("\n✓ Saved: %s  (%.0f rows × 16 × %.1f inches)\n", out_path, n_rows, plot_height))
+cat(sprintf("\n✓ Saved: %s  (%.0f rows × %.0f × %.1f inches)\n",
+            out_path, n_rows, PLOT_WIDTH_IN, plot_height))

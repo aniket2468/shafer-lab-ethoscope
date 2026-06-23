@@ -17,6 +17,11 @@ scripts <- c(
 )
 
 cat("=== Ethoscope analysis pipeline ===\n")
+config_path <- file.path(script_dir, "analysis_config.r")
+if (file.exists(config_path)) {
+  source(config_path, local = TRUE)
+  cat(sprintf("Config: do_crop = %s | SLEEP_BIN_MIN = %d min\n\n", do_crop, SLEEP_BIN_MIN))
+}
 cat("Scripts:", paste(scripts, collapse = " → "), "\n\n")
 
 for (i in seq_along(scripts)) {
@@ -26,7 +31,7 @@ for (i in seq_along(scripts)) {
   cat(sprintf("\n[%d/%d] Running %s\n", i, length(scripts), script))
   cat(strrep("=", 50), "\n\n")
 
-  status <- system2("Rscript", shQuote(script_path), stdout = "", stderr = "")
+  status <- system2("Rscript", shQuote(script_path))
   if (!identical(status, 0L)) {
     stop("Pipeline stopped: ", script, " failed (exit code ", status, ").")
   }
