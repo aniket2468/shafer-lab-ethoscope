@@ -38,26 +38,37 @@ newSleepDataEtho <- function(data, sleep.def = 5, bin = 60, t.cycle = 24) {
   }
   
   s_per_day <- (60/bin)*t.cycle
-  
+
   binned_full_run.sleep <- (nrow(raw)/(1440*6))*s_per_day
-  sleep <- matrix(NA, nrow = binned_full_run.sleep, ncol = 100)
+  n_ind <- ncol(raw)
+  sleep <- matrix(NA, nrow = binned_full_run.sleep, ncol = n_ind)
   index.sleep <- seq(1, nrow(raw), by = bin*6)
-  
+
   for (i in seq_along(index.sleep)) {
+    end_idx <- min(index.sleep[i] + (bin * 6) - 1, nrow(raw))
     for (j in seq_len(ncol(raw))) {
-      x <- raw[index.sleep[i]:(index.sleep[i]+((bin*6)-1)), j]
-      sleep[i,j] <- (sum(x)*10)/60
+      x <- raw[index.sleep[i]:end_idx, j]
+      if (all(is.na(x))) {
+        sleep[i, j] <- NA
+      } else {
+        sleep[i, j] <- (sum(x, na.rm = TRUE) * 10) / 60
+      }
     }
   }
-  
-  column.names <- c()
-  for (ii in 1:length(sleep[1,])) {
-    column.names[ii] <- paste("I",ii, sep = "")
+
+  has_data <- rowSums(!is.na(sleep)) > 0
+  if (any(has_data)) {
+    sleep <- sleep[seq_len(max(which(has_data))), , drop = FALSE]
+  } else {
+    sleep <- sleep[0, , drop = FALSE]
   }
+
+  column.names <- paste0("I", seq_len(ncol(sleep)))
   colnames(sleep) <- column.names
-  
+
   t <- seq((bin/60), t.cycle, by = (bin/60))
-  zt <- as.data.frame(rep(t, length(sleep[,1])/(t.cycle*(60/bin))))
+  n_bins <- nrow(sleep)
+  zt <- as.data.frame(rep(t, length.out = n_bins))
   colnames(zt) <- c("ZT")
   
   output <- cbind(zt,sleep)

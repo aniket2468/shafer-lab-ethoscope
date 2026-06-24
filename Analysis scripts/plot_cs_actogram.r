@@ -113,7 +113,7 @@ dt[, days       := hours / 24]
 dt[, sleep_norm := sleep_min / bin_mins]
 
 active_combos <- unique(dt[, .(ethoscope, pair)])
-setorder(active_combos, pair)
+setorder(active_combos, -pair)
 active_combos[, row_label := paste0("CS Pair ", pair)]
 active_combos[, row_idx   := seq_len(.N)]
 

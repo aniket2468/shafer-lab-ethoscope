@@ -74,7 +74,9 @@ for (eth_name in ethoscope_names) {
     focal.df <- as.data.frame(do.call(cbind, focal_list))
     colnames(focal.df) <- focal_names
     focal.sleep <- newSleepDataEtho(data = focal.df, sleep.def = 5, bin = SLEEP_BIN_MIN, t.cycle = 24)
-    colnames(focal.sleep) <- c("ZT", focal_names[2:(n_focal + 1)])
+    tube_cols <- focal_names[-1]
+    focal.sleep <- focal.sleep[, c("ZT", paste0("I", seq_along(tube_cols))), drop = FALSE]
+    colnames(focal.sleep) <- c("ZT", tube_cols)
     write.table(focal.sleep, paste0(OUTPUT_DIR, "Sleep_", eth_name, "_Focal.txt"), 
                 quote = FALSE, row.names = FALSE, sep = "\t")
     cat("  ✓ Saved: Sleep_", eth_name, "_Focal.txt\n", sep = "")
@@ -86,7 +88,9 @@ for (eth_name in ethoscope_names) {
     yoked.df <- as.data.frame(do.call(cbind, yoked_list))
     colnames(yoked.df) <- yoked_names
     yoked.sleep <- newSleepDataEtho(data = yoked.df, sleep.def = 5, bin = SLEEP_BIN_MIN, t.cycle = 24)
-    colnames(yoked.sleep) <- c("ZT", yoked_names[2:(n_yoked + 1)])
+    tube_cols <- yoked_names[-1]
+    yoked.sleep <- yoked.sleep[, c("ZT", paste0("I", seq_along(tube_cols))), drop = FALSE]
+    colnames(yoked.sleep) <- c("ZT", tube_cols)
     write.table(yoked.sleep, paste0(OUTPUT_DIR, "Sleep_", eth_name, "_Yoked.txt"), 
                 quote = FALSE, row.names = FALSE, sep = "\t")
     cat("  ✓ Saved: Sleep_", eth_name, "_Yoked.txt\n", sep = "")

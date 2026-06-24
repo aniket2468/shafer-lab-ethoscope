@@ -7,6 +7,7 @@ OUTPUT_DIR <- "Analysis scripts/analysis_output/"
 
 SLEEP_BIN_MIN <- read_applied_bin(OUTPUT_DIR)
 BIN_HOURS     <- SLEEP_BIN_MIN / 60
+BIN_SEC_ROWS  <- SLEEP_BIN_MIN * 6L   # 10-sec samples per sleep bin
 BINS_PER_DAY  <- (24 * 60) / SLEEP_BIN_MIN
 cat("Sleep bin size:", SLEEP_BIN_MIN, "min\n\n")
 
@@ -20,51 +21,112 @@ detect_ethoscopes <- function(output_dir) {
   eth[order(as.integer(sub("Eth", "", eth)))]
 }
 
+ethoscope_raw_path <- function(output_dir, eth) {
+  eth_num <- as.integer(sub("^Eth0*", "", eth))
+  path <- paste0(output_dir, "ethoscope_", eth_num, ".txt")
+  if (file.exists(path)) path else NA_character_
+}
+
+load_motor_events <- function(output_dir, ethoscopes, pairs, bin_sec_rows, bin_hours,
+                              skip_rows, max_row, plot_pairs, exclude_pairs) {
+  motor_list <- list()
+  bin_sec <- bin_sec_rows * 10L   # seconds per sleep bin
+
+  for (eth in ethoscopes) {
+    raw_path <- ethoscope_raw_path(output_dir, eth)
+    if (is.na(raw_path)) {
+      cat("  ⚠ No raw file for motor markers:", eth, "\n")
+      next
+    }
+
+    full <- fread(raw_path, select = c("id", "t", "interactions"))
+    t_origin <- full[, .(t_min = min(t)), by = id]
+
+    raw <- full[interactions > 0L]
+    if (nrow(raw) == 0L) next
+
+    raw <- t_origin[raw, on = "id"]
+    raw[, tube := as.integer(sub(".*\\|", "", id))]
+    raw[, ethoscope := eth]
+
+    # Bin from elapsed time (t), not row index among interaction rows only
+    raw[, bin := floor((t - t_min) / bin_sec) + 1L]
+    raw <- raw[bin > skip_rows & bin <= max_row + skip_rows]
+    raw[, bin := bin - skip_rows]
+    if (nrow(raw) == 0L) next
+
+    raw[tube %in% pairs$focal_tube, condition := "Focal"]
+    raw[tube %in% pairs$yoked_tube, condition := "Yoked"]
+    raw <- raw[!is.na(condition)]
+    raw[condition == "Focal", pair := pairs$pair[match(tube, pairs$focal_tube)]]
+    raw[condition == "Yoked", pair := pairs$pair[match(tube, pairs$yoked_tube)]]
+    raw <- raw[!is.na(pair)]
+
+    if (!identical(tolower(as.character(plot_pairs)), "all")) {
+      raw <- raw[pair %in% as.integer(plot_pairs)]
+    }
+    if (eth %in% names(exclude_pairs)) {
+      raw <- raw[!pair %in% exclude_pairs[[eth]]]
+    }
+    if (nrow(raw) == 0L) next
+
+    # One marker per sleep bin per tube (interactions can span multiple 10-sec rows)
+    raw <- raw[, .(days = (bin[1L] - 1L) * bin_hours / 24),
+               by = .(ethoscope, pair, condition, tube, bin)]
+
+    motor_list[[eth]] <- raw
+  }
+
+  if (length(motor_list) == 0L) return(NULL)
+  rbindlist(motor_list)
+}
+
 ETHOSCOPES <- detect_ethoscopes(OUTPUT_DIR)
 cat("Detected ethoscopes:", paste(ETHOSCOPES, collapse = ", "), "\n\n")
 
-# 3. Yoking pairs.
 PAIRS <- data.frame(
   pair       = c(1,  2,  3,  4,  5),
-  focal_tube = c(1,  3,  5,  7,  9),   # RED   solid — focal
-  yoked_tube = c(12, 14, 16, 18, 20)   # BLUE  dashed — yoked
+  focal_tube = c(1,  3,  5,  7,  9),
+  yoked_tube = c(12, 14, 16, 18, 20)
 )
 
-# 4. Which pair numbers to include in the plot.
-#    Use "all" to include every pair found, or a numeric vector e.g. c(1, 2).
 PLOT_PAIRS <- "all"
 
-# 4b. Ethoscope-specific pairs to EXCLUDE.
-#     Named list: ethoscope ID → integer vector of pair numbers to drop.
 EXCLUDE_PAIRS <- list(
   Eth007 = c()
 )
 
-# Line colours and legend text
-FOCAL_COLOR <- "#E41A1C"            # red
-YOKED_COLOR <- "#377EB8"            # blue
+FOCAL_COLOR <- "#E41A1C"
+YOKED_COLOR <- "#377EB8"
 FOCAL_LABEL <- "Focal (Deprived)"
 YOKED_LABEL <- "Yoked (Control)"
 
+# Motor engagement markers (interactions > 0 in raw ethoscope data)
+FOCAL_MOTOR_COLOR <- "#2CA02C"   # green
+YOKED_MOTOR_COLOR <- "#9467BD"   # purple
+MOTOR_ALPHA       <- 0.45
+MOTOR_LINEWIDTH   <- if (SLEEP_BIN_MIN <= 5) 1.2 else 0.9
+FOCAL_MOTOR_LABEL <- "Focal motor"
+YOKED_MOTOR_LABEL <- "Yoked motor"
+
 SKIP_ROWS <- 0
+MAX_DAYS  <- 6
 
-MAX_DAYS <- 6
+OUTPUT_FILE <- paste0(
+  "Paired_Actogram_with_Motor", CROP_TAG, "_",
+  format(Sys.Date(), "%d_%b"), "_", SLEEP_BIN_MIN, "min.pdf"
+)
 
-OUTPUT_FILE <- paste0("Paired_Actogram", CROP_TAG, "_", format(Sys.Date(), "%d_%b"), "_", SLEEP_BIN_MIN, "min.pdf")
-
-# Height scaling factor (e.g. 0.7 means sleep peak takes up 70% of the spacing between baseline rows, preventing overlap)
-WAVE_SCALE <- 0.7
-
-# PDF height: fixed inches per actogram row (so few rows = short page, not tall rows)
-ROW_HEIGHT_IN <- 0.6
-HEIGHT_EXTRA_IN <- 2   # title, legend, margins
+WAVE_SCALE      <- 0.7
+ROW_HEIGHT_IN   <- 0.6
+HEIGHT_EXTRA_IN <- 2
 PLOT_WIDTH_IN   <- if (SLEEP_BIN_MIN == 5) 48 else 16
 
 # ============================================================
-# LOAD DATA — No edits needed below this line
+# LOAD SLEEP DATA
 # ============================================================
 
-cat("Loading data...\n\n")
+cat("Loading sleep data...\n\n")
 all_data <- list()
 
 for (eth in ETHOSCOPES) {
@@ -132,16 +194,8 @@ if (length(all_data) == 0) stop("No data loaded — check ETHOSCOPES and OUTPUT_
 
 dt <- rbindlist(all_data)
 
-# ============================================================
-# APPLY ROW SKIP
-# ============================================================
-
 dt <- dt[row_num > SKIP_ROWS]
 dt[, row_num := row_num - SKIP_ROWS]
-
-# ============================================================
-# AUTO-DETECT DURATION FROM ALL LOADED FILES
-# ============================================================
 
 bin_hours <- BIN_HOURS
 bin_mins  <- SLEEP_BIN_MIN
@@ -153,16 +207,13 @@ if (!is.null(MAX_DAYS)) {
   max_days <- MAX_DAYS
   cat(sprintf("\nUsing fixed duration: %.1f h (%.2f days)\n", max_row * bin_hours, max_days))
 } else {
-  # 95th percentile — robust to early deaths while not cutting the run short
   max_row  <- as.numeric(quantile(individual_max_rows$max_row, 0.95))
   max_days <- (max_row - 1) * bin_hours / 24
   cat(sprintf("\nAuto-detected recording duration: %.1f h (%.2f days)\n", max_row * bin_hours, max_days))
 }
 
-# Filter to that duration
 dt <- dt[row_num <= max_row]
 
-# Compute time variables
 dt[, hours     := (row_num - 1) * bin_hours]
 dt[, days      := hours / 24]
 dt[, sleep_norm := sleep_min / bin_mins]
@@ -186,57 +237,96 @@ n_rows <- length(row_order)
 cat("Total pairs plotted:", n_rows, "\n")
 
 # ============================================================
-# ETHOSCOPE GROUP LABELS (dynamically placed)
+# LOAD MOTOR EVENTS
 # ============================================================
 
-eth_label_dt <- active_combos[, .(mid_y = mean(seq_len(.N) + min(which(row_order %in% paste0(ethoscope, " Pair ", pair))) - 1)),
-                               by = ethoscope]
-eth_label_dt[, mid_y := sapply(ethoscope, function(e) {
-  rows_for_eth <- which(active_combos$ethoscope == e)
-  mean(rows_for_eth)
-})]
+cat("\nLoading motor engagement markers...\n")
+motor_dt <- load_motor_events(
+  OUTPUT_DIR, ETHOSCOPES, PAIRS, BIN_SEC_ROWS, BIN_HOURS,
+  SKIP_ROWS, max_row, PLOT_PAIRS, EXCLUDE_PAIRS
+)
+
+if (!is.null(motor_dt)) {
+  motor_dt <- active_combos[motor_dt, on = c("ethoscope", "pair")]
+  motor_dt <- motor_dt[!is.na(row_idx)]
+  motor_dt[, y_pos := row_idx]
+  motor_dt[, y_bot := y_pos - 0.02]
+  motor_dt[, y_top := y_pos + WAVE_SCALE + 0.02]
+
+  n_focal <- nrow(motor_dt[condition == "Focal"])
+  n_yoked <- nrow(motor_dt[condition == "Yoked"])
+  cat(sprintf("  ✓ Motor events: %d focal, %d yoked\n", n_focal, n_yoked))
+  cat(sprintf("  ✓ Motor x-range: %.2f – %.2f days\n",
+              min(motor_dt$days), max(motor_dt$days)))
+} else {
+  cat("  ⚠ No motor events found — plot will show sleep traces only\n")
+}
+
+# ============================================================
+# ETHOSCOPE GROUP LABELS
+# ============================================================
+
+eth_label_dt <- active_combos[, .(mid_y = mean(row_idx)), by = ethoscope]
 eth_label_dt[, label := ethoscope]
 
-# ============================================================
-# X-AXIS BREAKS — scaled to actual duration
-# ============================================================
-
-x_max <- ceiling(max_days * 4) / 4   # round up to nearest 0.25 day
-
+x_max <- ceiling(max_days * 4) / 4
 x_break_interval <- if (max_days <= 1.5) 0.25 else if (max_days <= 4) 0.5 else 1.0
 x_breaks <- seq(0, x_max, by = x_break_interval)
+label_x  <- -x_max * 0.15
 
-# Left-margin x position for ethoscope labels
-label_x <- -x_max * 0.15
+eth_annotations <- lapply(seq_len(nrow(eth_label_dt)), function(i) {
+  annotate("text",
+           x = label_x, y = eth_label_dt$mid_y[i],
+           label = eth_label_dt$label[i],
+           fontface = "bold", size = 4, hjust = 1)
+})
 
 # ============================================================
 # BUILD PLOT
 # ============================================================
 
-# Pre-compute dynamic ethoscope label annotations
-eth_annotations <- lapply(seq_len(nrow(eth_label_dt)), function(i) {
-  annotate("text",
-           x        = label_x,
-           y        = eth_label_dt$mid_y[i],
-           label    = eth_label_dt$label[i],
-           fontface = "bold",
-           size     = 4,
-           hjust    = 1)
-})
-
 p <- ggplot(dt, aes(
     x     = days,
     y     = y_pos + sleep_norm * WAVE_SCALE,
     group = interaction(row_label, condition)
-  )) +
+  ))
 
-  geom_line(aes(linetype = condition, color = condition), linewidth = 0.5) +
+p <- p +
   geom_hline(yintercept = seq_len(n_rows), color = "gray85", linewidth = 0.3) +
+  geom_line(aes(linetype = condition, color = condition), linewidth = 0.5)
 
+# Motor markers on top of sleep traces — semi-transparent so overlap blends
+if (!is.null(motor_dt) && nrow(motor_dt) > 0) {
+  motor_focal <- motor_dt[condition == "Focal"]
+  motor_yoked <- motor_dt[condition == "Yoked"]
+
+  if (nrow(motor_focal) > 0) {
+    p <- p + geom_segment(
+      data = motor_focal,
+      aes(x = days, xend = days, y = y_bot, yend = y_top),
+      inherit.aes = FALSE,
+      color = FOCAL_MOTOR_COLOR,
+      alpha = MOTOR_ALPHA,
+      linewidth = MOTOR_LINEWIDTH
+    )
+  }
+  if (nrow(motor_yoked) > 0) {
+    p <- p + geom_segment(
+      data = motor_yoked,
+      aes(x = days, xend = days, y = y_bot, yend = y_top),
+      inherit.aes = FALSE,
+      color = YOKED_MOTOR_COLOR,
+      alpha = MOTOR_ALPHA,
+      linewidth = MOTOR_LINEWIDTH
+    )
+  }
+}
+
+p <- p +
   eth_annotations +
 
   scale_linetype_manual(
-    values = c("Focal" = "solid",   "Yoked" = "dashed"),
+    values = c("Focal" = "solid", "Yoked" = "dashed"),
     name   = NULL,
     labels = c("Focal" = FOCAL_LABEL, "Yoked" = YOKED_LABEL)
   ) +
@@ -254,17 +344,15 @@ p <- ggplot(dt, aes(
     breaks = x_breaks,
     labels = x_breaks
   ) +
-
   labs(
-    title    = "Sleep Actogram: Focal vs Yoked Pairs",
+    title    = "Sleep Actogram: Focal vs Yoked Pairs (with Motor Events)",
     subtitle = sprintf(
-      "Solid = %s  |  Dashed = %s  |  Upward = Sleeping  |  %d-min bins",
-      FOCAL_LABEL, YOKED_LABEL, SLEEP_BIN_MIN
+      "Solid = %s  |  Dashed = %s  |  Green = %s  |  Purple = %s  |  %d-min bins",
+      FOCAL_LABEL, YOKED_LABEL, FOCAL_MOTOR_LABEL, YOKED_MOTOR_LABEL, SLEEP_BIN_MIN
     ),
     x = "Days",
     y = NULL
   ) +
-
   theme_minimal(base_size = 13) +
   theme(
     axis.text.y        = element_text(size = 10, face = "bold"),
