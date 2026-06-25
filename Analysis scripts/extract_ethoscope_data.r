@@ -1,14 +1,16 @@
+.fa <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
+.sd <- if (length(.fa)) dirname(normalizePath(gsub("~\\+~", " ", sub("^--file=", "", .fa[1])), winslash = "/")) else normalizePath(getwd())
+source(file.path(.sd, "analysis_config.r"))
+rm(.fa, .sd)
+
 library(scopr)
 library(data.table)
 library(sleepr)
 library(RSQLite)
 
-setwd("/Users/aniketsharma/Documents/Ethoscope/Ethoscope/")
-source("Analysis scripts/analysis_config.r")
+output_dir <- OUTPUT_DIR
 
-output_dir <- "Analysis scripts/analysis_output/"
-
-all_dbs <- Sys.glob("ethoscope_data/results/*/ETHOSCOPE_*/*/*.db")
+all_dbs <- Sys.glob(file.path(ETHOSCOPE_DATA_DIR, "results/*/ETHOSCOPE_*/*/*.db"))
 
 if (length(all_dbs) == 0) stop("No .db files found in ethoscope_data/results/")
 
@@ -48,7 +50,7 @@ for (i in 1:nrow(db_info)) {
   )
 
   tryCatch({
-    metadata <- link_ethoscope_metadata(metadata, result_dir = "ethoscope_data/results/")
+    metadata <- link_ethoscope_metadata(metadata, result_dir = file.path(ETHOSCOPE_DATA_DIR, "results/"))
   }, error = function(e) {
     cat("  ⚠ Failed to link metadata:", conditionMessage(e), "\n")
     return(NULL)

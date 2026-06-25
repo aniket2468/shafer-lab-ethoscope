@@ -2,10 +2,12 @@
 # CREATE SLEEP DATA FILES - PER ETHOSCOPE
 # ============================================
 
-source("/Users/aniketsharma/Documents/Ethoscope/Ethoscope/Analysis scripts/02_newSleepDataEtho.r")
-source("/Users/aniketsharma/Documents/Ethoscope/Ethoscope/Analysis scripts/analysis_config.r")
+.fa <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
+.sd <- if (length(.fa)) dirname(normalizePath(gsub("~\\+~", " ", sub("^--file=", "", .fa[1])), winslash = "/")) else normalizePath(getwd())
+source(file.path(.sd, "analysis_config.r"))
+rm(.fa, .sd)
 
-OUTPUT_DIR <- "/Users/aniketsharma/Documents/Ethoscope/Ethoscope/Analysis scripts/analysis_output/"
+source_script("02_newSleepDataEtho.r")
 
 resolve_latest_rds <- function(output_dir) {
   rds_files <- list.files(output_dir, pattern = "_all_ethoscopes_10sec\\.rds$", full.names = TRUE)

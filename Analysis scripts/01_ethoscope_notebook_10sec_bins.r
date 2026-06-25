@@ -1,8 +1,9 @@
-rm(list=ls())
+.fa <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
+.sd <- if (length(.fa)) dirname(normalizePath(gsub("~\\+~", " ", sub("^--file=", "", .fa[1])), winslash = "/")) else normalizePath(getwd())
+source(file.path(.sd, "analysis_config.r"))
+rm(.fa, .sd)
 
-base_dir <- "/Users/aniketsharma/Documents/Ethoscope/Ethoscope/"
-
-df <- read.delim(paste0(base_dir, "Analysis scripts/analysis_output/all_ethoscopes_merged.txt"), header = T)
+df <- read.delim(file.path(OUTPUT_DIR, "all_ethoscopes_merged.txt"), header = TRUE)
 
 datSortBin <- function (input, n.days, cat.names = c("Control", "Experimental"), ethoscope.id, mins.trim) {
   library(stringr)
@@ -67,14 +68,14 @@ datSortBin <- function (input, n.days, cat.names = c("Control", "Experimental"),
 }
 
 # Auto-detect ethoscopes from results folder
-results_dirs <- list.dirs(paste0(base_dir, "ethoscope_data/results/"), recursive = FALSE)
+results_dirs <- list.dirs(file.path(ETHOSCOPE_DATA_DIR, "results"), recursive = FALSE)
 machine_id_folders <- basename(results_dirs)
 
 cat_names <- c()
 eth_ids   <- c()
 
 for (mid in machine_id_folders) {
-  eth_folder <- list.dirs(file.path(base_dir, "ethoscope_data/results", mid), recursive = FALSE)
+  eth_folder <- list.dirs(file.path(ETHOSCOPE_DATA_DIR, "results", mid), recursive = FALSE)
   eth_folder <- basename(eth_folder[grepl("^ETHOSCOPE_", basename(eth_folder))])
   if (length(eth_folder) == 0) next
   
@@ -103,7 +104,7 @@ df.sorted <- datSortBin(input = df, n.days = 6,
                         ethoscope.id = eth_ids,
                         mins.trim = rep(0, length(eth_ids)))
 
-output_dir <- paste0(base_dir, "Analysis scripts/analysis_output/")
+output_dir <- OUTPUT_DIR
 out_rds    <- paste0(output_dir, format(Sys.Date(), "%d_%b"), "_all_ethoscopes_10sec.rds")
 
 saveRDS(df.sorted, out_rds)

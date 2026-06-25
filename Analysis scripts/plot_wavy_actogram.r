@@ -1,9 +1,10 @@
+.fa <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
+.sd <- if (length(.fa)) dirname(normalizePath(gsub("~\\+~", " ", sub("^--file=", "", .fa[1])), winslash = "/")) else normalizePath(getwd())
+source(file.path(.sd, "analysis_config.r"))
+rm(.fa, .sd)
+
 library(data.table)
 library(ggplot2)
-
-setwd("/Users/aniketsharma/Documents/Ethoscope/Ethoscope/")
-source("Analysis scripts/analysis_config.r")
-OUTPUT_DIR <- "Analysis scripts/analysis_output/"
 
 SLEEP_BIN_MIN <- read_applied_bin(OUTPUT_DIR)
 BIN_HOURS     <- SLEEP_BIN_MIN / 60

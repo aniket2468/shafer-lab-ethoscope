@@ -1,14 +1,18 @@
 #!/usr/bin/env Rscript
 
-args <- commandArgs(trailingOnly = FALSE)
-file_arg <- grep("^--file=", args, value = TRUE)
-script_dir <- if (length(file_arg)) {
-  dirname(normalizePath(sub("^--file=", "", file_arg)))
-} else {
-  getwd()
+get_script_dir <- function() {
+  file_arg <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
+  if (length(file_arg)) {
+    path <- gsub("~\\+~", " ", sub("^--file=", "", file_arg[1]))
+    return(dirname(normalizePath(path, winslash = "/")))
+  }
+  if (file.exists("analysis_config.r")) {
+    return(normalizePath(getwd(), winslash = "/"))
+  }
+  stop("Run from Analysis scripts/ or via Rscript with full path.")
 }
 
-scripts <- c(
+PIPELINE_SCRIPTS <- c(
   "extract_ethoscope_data.r",
   "01_ethoscope_notebook_10sec_bins.r",
   "03_CreateSleepDataFilesFromRawEthoscopeOutput.r",
@@ -16,26 +20,31 @@ scripts <- c(
   "daily_sleep_summary.r"
 )
 
-cat("=== Ethoscope analysis pipeline ===\n")
-config_path <- file.path(script_dir, "analysis_config.r")
-if (file.exists(config_path)) {
-  source(config_path, local = TRUE)
-  cat(sprintf("Config: do_crop = %s | SLEEP_BIN_MIN = %d min\n\n", do_crop, SLEEP_BIN_MIN))
-}
-cat("Scripts:", paste(scripts, collapse = " → "), "\n\n")
+run_pipeline_steps <- function(script_dir) {
+  source(file.path(script_dir, "prompt_pipeline_settings.r"), local = TRUE)
+  env <- pipeline_env_prefix(script_dir)
 
-for (i in seq_along(scripts)) {
-  script <- scripts[i]
-  script_path <- file.path(script_dir, script)
+  for (i in seq_along(PIPELINE_SCRIPTS)) {
+    script <- PIPELINE_SCRIPTS[i]
+    cat(sprintf("\n[%d/%d] Running %s\n", i, length(PIPELINE_SCRIPTS), script))
+    cat(strrep("=", 50), "\n\n")
 
-  cat(sprintf("\n[%d/%d] Running %s\n", i, length(scripts), script))
-  cat(strrep("=", 50), "\n\n")
-
-  status <- system2("Rscript", shQuote(script_path))
-  if (!identical(status, 0L)) {
-    stop("Pipeline stopped: ", script, " failed (exit code ", status, ").")
+    cmd <- paste0(env, "Rscript ", shQuote(file.path(script_dir, script)))
+    status <- system(cmd)
+    if (!identical(status, 0L)) {
+      stop("Pipeline stopped: ", script, " failed (exit code ", status, ").")
+    }
   }
+  cat("\n", strrep("=", 50), "\n✓ Pipeline complete.\n", sep = "")
 }
 
-cat("\n", strrep("=", 50), "\n", sep = "")
-cat("✓ Pipeline complete.\n")
+# --- run when executed directly: Rscript run_analysis_pipeline.r ---
+if (sys.nframe() == 0L) {
+  script_dir <- get_script_dir()
+  cat("=== Ethoscope analysis pipeline ===\n")
+  source(file.path(script_dir, "prompt_pipeline_settings.r"), local = TRUE)
+  prompt_pipeline_settings()
+  source(file.path(script_dir, "analysis_config.r"), local = TRUE)
+  cat(sprintf("Config: do_crop = %s | SLEEP_BIN_MIN = %d min\n\n", do_crop, SLEEP_BIN_MIN))
+  run_pipeline_steps(script_dir)
+}

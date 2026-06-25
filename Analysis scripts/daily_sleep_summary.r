@@ -1,8 +1,9 @@
-library(data.table)
+.fa <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
+.sd <- if (length(.fa)) dirname(normalizePath(gsub("~\\+~", " ", sub("^--file=", "", .fa[1])), winslash = "/")) else normalizePath(getwd())
+source(file.path(.sd, "analysis_config.r"))
+rm(.fa, .sd)
 
-setwd("/Users/aniketsharma/Documents/Ethoscope/Ethoscope/")
-source("Analysis scripts/analysis_config.r")
-OUTPUT_DIR <- "Analysis scripts/analysis_output/"
+library(data.table)
 
 SLEEP_BIN_MIN <- read_applied_bin(OUTPUT_DIR)
 BINS_PER_DAY  <- (24 * 60) / SLEEP_BIN_MIN
